@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Keyboard View Controller-->
+        <scene sceneID="76Q-5Q-08I">
+            <objects>
+                <viewController id="mHa-Td-hSK" customClass="KeyboardViewController" customModule="MusicMaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J2M-su-CfI" customClass="KeyboardView" customModule="MusicMaker" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beH-1y-HQA" customClass="KeyboardView" customModule="MusicMaker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="beH-1y-HQA" secondAttribute="trailing" id="BKa-0o-t5f"/>
+                            <constraint firstItem="beH-1y-HQA" firstAttribute="leading" secondItem="J2M-su-CfI" secondAttribute="leading" id="BTG-dx-OUf"/>
+                            <constraint firstAttribute="bottom" secondItem="beH-1y-HQA" secondAttribute="bottom" id="Og7-uV-pg6"/>
+                            <constraint firstItem="beH-1y-HQA" firstAttribute="top" secondItem="q87-Sv-KIV" secondAttribute="top" id="pxv-SN-6dj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q87-Sv-KIV"/>
+                    </view>
+                    <connections>
+                        <outlet property="keyboardView" destination="beH-1y-HQA" id="iyX-7I-o9W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eyl-fH-vPt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.61607142857142" y="-633.33333333333337"/>
+        </scene>
+        <!--Note Sheet View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="NoteSheetViewController" customModule="MusicMaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGE-dc-sWq" customClass="StringTrackScrollView" customModule="MusicMaker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="350"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Bk-sE-G6J">
+                                <rect key="frame" x="0.0" y="350" width="896" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDK-Cn-6Nl">
+                                        <rect key="frame" x="433" y="17" width="30" height="30"/>
+                                        <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="playButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DgS-3a-Jev"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="MPa-Ai-kdy"/>
+                                    <constraint firstItem="tDK-Cn-6Nl" firstAttribute="centerY" secondItem="2Bk-sE-G6J" secondAttribute="centerY" id="Yc3-Sn-Yb3"/>
+                                    <constraint firstItem="tDK-Cn-6Nl" firstAttribute="centerX" secondItem="2Bk-sE-G6J" secondAttribute="centerX" id="dLL-bF-2He"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2Bk-sE-G6J" secondAttribute="trailing" id="7mN-Zl-ubB"/>
+                            <constraint firstAttribute="bottom" secondItem="2Bk-sE-G6J" secondAttribute="bottom" id="KIp-Oo-ra8"/>
+                            <constraint firstItem="2Bk-sE-G6J" firstAttribute="top" secondItem="hGE-dc-sWq" secondAttribute="bottom" id="KXI-WM-jqO"/>
+                            <constraint firstItem="2Bk-sE-G6J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KnM-Ur-JFv"/>
+                            <constraint firstItem="hGE-dc-sWq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bYq-DY-U3b"/>
+                            <constraint firstItem="hGE-dc-sWq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="iDt-OY-FAW"/>
+                            <constraint firstAttribute="trailing" secondItem="hGE-dc-sWq" secondAttribute="trailing" id="jsS-Zt-xoO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="playButton" destination="tDK-Cn-6Nl" id="gye-rH-Hsd"/>
+                        <outlet property="stringTrackView" destination="hGE-dc-sWq" id="i2n-Hq-E6L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.61607142857142" y="128.98550724637681"/>
+        </scene>
+        <!--Tone Visualizer View Controller-->
+        <scene sceneID="itl-oE-hBu">
+            <objects>
+                <viewController id="h6Q-K9-xkQ" customClass="ToneVisualizerViewController" customModule="MusicMaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RdM-ad-YMw">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuv-50-2c4" customClass="ToneVisualizerView" customModule="MusicMaker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="154.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MW6-ek-8xj">
+                                <rect key="frame" x="433" y="363" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playButtonTapped:" destination="h6Q-K9-xkQ" eventType="touchUpInside" id="GT1-DY-4Um"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tb-Yt-EIn" customClass="FrequencyVisualizerView" customModule="MusicMaker" customModuleProvider="target">
+                                <rect key="frame" x="44" y="154.5" width="808" height="208.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Fuv-50-2c4" firstAttribute="leading" secondItem="RdM-ad-YMw" secondAttribute="leading" id="0b8-hb-CMQ"/>
+                            <constraint firstItem="MW6-ek-8xj" firstAttribute="top" secondItem="9Tb-Yt-EIn" secondAttribute="bottom" id="52a-AK-bcX"/>
+                            <constraint firstItem="9Tb-Yt-EIn" firstAttribute="leading" secondItem="p70-Co-q3c" secondAttribute="leading" id="DPN-c8-uoO"/>
+                            <constraint firstItem="Fuv-50-2c4" firstAttribute="top" secondItem="p70-Co-q3c" secondAttribute="top" id="TzL-Wg-Anh"/>
+                            <constraint firstItem="9Tb-Yt-EIn" firstAttribute="trailing" secondItem="p70-Co-q3c" secondAttribute="trailing" id="YQD-D9-AQH"/>
+                            <constraint firstItem="9Tb-Yt-EIn" firstAttribute="height" secondItem="Fuv-50-2c4" secondAttribute="height" multiplier="1.3465" id="csm-sF-mCi"/>
+                            <constraint firstItem="MW6-ek-8xj" firstAttribute="bottom" secondItem="p70-Co-q3c" secondAttribute="bottom" id="gzk-7f-EQa"/>
+                            <constraint firstItem="MW6-ek-8xj" firstAttribute="centerX" secondItem="RdM-ad-YMw" secondAttribute="centerX" id="nkT-1z-7Dp"/>
+                            <constraint firstItem="9Tb-Yt-EIn" firstAttribute="top" secondItem="Fuv-50-2c4" secondAttribute="bottom" id="oBV-gE-zhL"/>
+                            <constraint firstAttribute="trailing" secondItem="Fuv-50-2c4" secondAttribute="trailing" id="rGV-Gg-002"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="p70-Co-q3c"/>
+                    </view>
+                    <connections>
+                        <outlet property="frequencyVisualizerView" destination="9Tb-Yt-EIn" id="YwP-Vc-Kqr"/>
+                        <outlet property="toneVisualizerView" destination="Fuv-50-2c4" id="1Ed-nS-NMd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uyv-sv-aqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="882.58928571428567"/>
+        </scene>
+    </scenes>
+</document>

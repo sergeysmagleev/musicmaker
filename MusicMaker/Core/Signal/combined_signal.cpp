@@ -1,0 +1,51 @@
+//
+//  combined_signal.cpp
+//  MusicMaker
+//
+//  Created by Sergey Smagleev on 09.06.20.
+//  Copyright © 2020 Sergey Smagleev. All rights reserved.
+//
+
+#include "combined_signal.hpp"
+
+CCombinedSignal::CCombinedSignal(std::vector<CSignal*> _signals) : CSignal() {
+    signals = _signals;
+    amplitudes.reserve(signals.size());
+    for (int i = 0; i < _signals.size(); ++i) {
+        amplitudes.push_back(1.0);
+    }
+}
+
+CCombinedSignal::CCombinedSignal(std::vector<CSignal*> _signals, std::vector<float> _amplitudes) : CSignal() {
+    signals = _signals;
+    amplitudes = _amplitudes;
+}
+
+CCombinedSignal::~CCombinedSignal() {
+    for (int i = 0; i < signals.size(); ++i) {
+        delete signals[i];
+    }
+    signals.clear();
+    amplitudes.clear();
+}
+
+float CCombinedSignal::advanceTimeAndReturnValue(float time_increment) {
+    float retVal = 0;
+    for (int i = 0; i < signals.size(); ++i) {
+        retVal += signals[i]->advanceTimeAndReturnValue(time_increment) * amplitudes[i];
+    }
+    return retVal;
+}
+
+void CCombinedSignal::start() {
+    for (int i = 0; i < signals.size(); ++i) {
+        signals[i]->start();
+    }
+}
+
+void CCombinedSignal::stop() {
+    for (int i = 0; i < signals.size(); ++i) {
+        signals[i]->stop();
+    }
+}
+
