@@ -31,49 +31,29 @@
 {
     self = [super init];
     if (self) {
-        track = new CComposedTrack(CSignalFactory::kickDrum(130.81),
-                                   CSignalFactory::snareDrum(),
-                                   CSignalFactory::hihat_drum(),
-                                   CSignalFactory::modulated_bass(noteA1, noteB1),
-                                   CSignalFactory::modulated_bass(noteB0, noteB0),
-//                                   CSignalFactory::modulated_bass(55.00, 58.00),
-//                                   CSignalFactory::separate_reverb_chord(659.25, 783.99, 987.77),
-                                   
-//                                   CSignalFactory::single_reverb_chord(130.81, 155.56, 196.00),
-//                                   CSignalFactory::single_reverb_chord(87.31, 110.00, 130.81),
-//                                   CSignalFactory::single_reverb_chord(98.00, 116.54, 146.83)
-                                   
-//                                   CSignalFactory::separate_reverb_chord(noteC6, noteEb6, noteG6),
-//                                   CSignalFactory::separate_reverb_chord(noteF5, noteA5, noteC6),
-//                                   CSignalFactory::separate_reverb_chord(noteG5, noteBb5, noteD6)
-                                   
-                                   CSignalFactory::separate_reverb_chord(noteC5, noteEb5, noteG5),
-                                   CSignalFactory::separate_reverb_chord(noteF4, noteA4, noteC5),
-                                   CSignalFactory::separate_reverb_chord(noteG4, noteBb4, noteD5)
-                                   
-//                                   CSignalFactory::separate_reverb_chord(noteC4, noteEb4, noteG4),
-//                                   CSignalFactory::separate_reverb_chord(noteF3, noteA3, noteC4),
-//                                   CSignalFactory::separate_reverb_chord(noteG3, noteBb3, noteD4)
-                                   
-//                                   CSignalFactory::separate_reverb_chord(noteC3, noteEb3, noteG3),
-//                                   CSignalFactory::separate_reverb_chord(noteF2, noteA2, noteC3),
-//                                   CSignalFactory::separate_reverb_chord(noteG2, noteBb2, noteD3)
-                                   
-//                                   CSignalFactory::separate_reverb_chord(2637.02, 3135.96, 3951.07)
-                                   
-//.G3 : 196.00,
-//.Gd3 : 207.65,
-//.Ab3 : 207.65,
-//.A3 : 220.00,
-//.Ad3 : 233.08,
-//.Bb3 : 233.08,
-//.B3 : 246.94,
-//.C4 : 261.63,
-//.Cd4 : 277.18,
-//.Db4 : 277.18,
-//.D4 : 293.66,
-                                   
-                                   );
+//        track = new CComposedTrack(CSignalFactory::kickDrum(130.81),
+//                                   CSignalFactory::snareDrum(),
+//                                   CSignalFactory::hihat_drum(),
+//                                   CSignalFactory::modulated_bass(noteA1, noteB1),
+//                                   CSignalFactory::modulated_bass(noteB0, noteB0),
+//                                   CSignalFactory::separate_reverb_chord(noteC5, noteEb5, noteG5),
+//                                   CSignalFactory::separate_reverb_chord(noteF4, noteA4, noteC5),
+//                                   CSignalFactory::separate_reverb_chord(noteG4, noteBb4, noteD5));
+        track = new CComposedTrack({
+            CSignalFactory::bell_thingy(noteC5),
+            CSignalFactory::bell_thingy(noteCd5),
+            CSignalFactory::bell_thingy(noteD5),
+            CSignalFactory::bell_thingy(noteDd5),
+            CSignalFactory::bell_thingy(noteE5),
+            CSignalFactory::bell_thingy(noteF5),
+            CSignalFactory::bell_thingy(noteFd5),
+            CSignalFactory::bell_thingy(noteG5),
+            CSignalFactory::bell_thingy(noteGd5),
+            CSignalFactory::bell_thingy(noteA5),
+            CSignalFactory::bell_thingy(noteAd5),
+            CSignalFactory::bell_thingy(noteB5)
+        });
+        
         buffering_queue = dispatch_queue_create("com.file_reader.buffer_queue", DISPATCH_QUEUE_SERIAL);
         lock = [[NSLock alloc] init];
         readBuffer = (float *)calloc(BUFFER_SIZE, sizeof(float));
@@ -183,5 +163,18 @@
     track->toggle_signal((int)instrument, (int)beat, [drumId cStringUsingEncoding:NSUTF8StringEncoding]);
     [lock unlock];
 }
+
+- (void)addBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat drumId:(NSString *)drumId {
+    [lock lock];
+    track->toggle_signal((int)instrument, (int)beat, [drumId cStringUsingEncoding:NSUTF8StringEncoding]);
+    [lock unlock];
+}
+
+- (void)removeBeatForInstrument:(NSInteger)instrument drumId:(NSString *)drumId {
+    [lock lock];
+    track->remove_signal((int)instrument, [drumId cStringUsingEncoding:NSUTF8StringEncoding]);
+    [lock unlock];
+}
+
 
 @end

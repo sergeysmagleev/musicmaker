@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)clearBuffers;
 - (void)reset;
 - (void)toggleBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat drumId:(NSString *)drumId;
+- (void)addBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat drumId:(NSString *)drumId;
+- (void)removeBeatForInstrument:(NSInteger)instrument drumId:(NSString *)drumId;
 
 @end
 

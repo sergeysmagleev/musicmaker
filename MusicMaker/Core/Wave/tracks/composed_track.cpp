@@ -12,22 +12,8 @@
 
 static const float time_increment = 1.0 / 44100;
 
-CComposedTrack::CComposedTrack(CSignal * _kick_drum,
-                               CSignal * _snare_drum,
-                               CSignal * _hihat,
-                               CSignal * _bass,
-                               CSignal * _bass2,
-                               CSignal * _synth,
-                               CSignal * _synth2,
-                               CSignal * _synth3) {
-    kick_drum = _kick_drum;
-    snare_drum = _snare_drum;
-    hihat = _hihat;
-    bass = _bass;
-    bass2 = _bass2;
-    synth = _synth;
-    synth2 = _synth2;
-    synth3 = _synth3;
+CComposedTrack::CComposedTrack(std::vector<CSignal *> _signals) {
+//    signals = _signals;
     
     whole = 88200 * 0.8;
     half = whole / 2;
@@ -35,7 +21,7 @@ CComposedTrack::CComposedTrack(CSignal * _kick_drum,
     eights = whole / 8;
     sixteenth = whole / 16;
     tt = whole / 32;
-    drum_loop = new CComposedLoop({kick_drum, snare_drum, hihat});
+    drum_loop = new CComposedLoop(_signals);
     drum_loop->change_bpm(140);
 //    drum_loop->add_interval(0, 0, 1);
 //    drum_loop->add_interval(0, 16, 17);
@@ -47,11 +33,6 @@ CComposedTrack::~CComposedTrack() {
 //    delete kick_drum;
 //    delete snare_drum;
 //    delete hihat;
-    delete bass;
-    delete bass2;
-    delete synth;
-    delete synth2;
-    delete synth3;
     delete drum_loop;
 }
 
@@ -61,6 +42,14 @@ float CComposedTrack::play_next_frame() {
 
 void CComposedTrack::toggle_signal(int signal_index, int beat, std::string _uuid) {
     drum_loop->ToggleInterval(signal_index, beat, beat + 1, _uuid);
+}
+
+void CComposedTrack::add_signal(int signal_index, int beat, std::string _uuid) {
+    drum_loop->AddInterval(signal_index, beat, beat + 1, _uuid);
+}
+
+void CComposedTrack::remove_signal(int signal_index, std::string _uuid) {
+    drum_loop->RemoveInterval(signal_index, _uuid);
 }
 
 void CComposedTrack::StartPlaying() {

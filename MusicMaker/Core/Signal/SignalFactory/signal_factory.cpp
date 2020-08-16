@@ -232,8 +232,8 @@ CSignal *CSignalFactory::bell_thingy(float frequency) {
     
     CLowPassFilterSignal *wave_lowpass = new CLowPassFilterSignal(modulated, 0.5);
     CHighPassFilterSignal *wave_highpass = new CHighPassFilterSignal(wave_lowpass, 0.8);
-    CSignal *delayed = new CDelaySignal(wave_highpass, 1007, 9, 0.5);
-    return delayed;
+//    CSignal *delayed = new CDelaySignal(wave_highpass, 1007, 9, 0.85);
+    return wave_highpass;
 }
 
 CSignal *CSignalFactory::quick_noise() {

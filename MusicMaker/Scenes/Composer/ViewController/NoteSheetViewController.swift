@@ -22,6 +22,7 @@ class NoteSheetViewController: UIViewController {
         super.viewDidLoad()
         track = ComposedTrack()
         audioEngine.delegate = self
+        stringTrackView.setTrackViewDelegate(self)
 //        drumTrackView.configure(numOfBeats: 64, numOfInstruments: 3)
 //        drumTrackView.delegate = self
         
@@ -32,7 +33,6 @@ class NoteSheetViewController: UIViewController {
     }
     
     @IBAction func playButtonTapped(_ sender: Any) {
-        return
         playing = !playing
         if playing {
 //            track.prepareToPlay()
@@ -66,6 +66,23 @@ extension NoteSheetViewController: DrumTrackViewDelegate {
                        atIndex index: Int,
                        drumID: String) {
         track.toggleBeat(forInstrument: instrument, beat: index, drumId: drumID)
+    }
+    
+}
+
+extension NoteSheetViewController: StringTrackViewDelegate {
+    
+    func stringTrackView(_ sender: StringTrackView,
+                         didAddBeatAtNote note: Int,
+                         timeStamp: Int,
+                         beatID: String) {
+        track.addBeat(forInstrument: note, beat: timeStamp, drumId: beatID)
+    }
+    
+    func stringTrackView(_ sender: StringTrackView,
+                         didRemoveBeatAtNote note: Int,
+                         beatID: String) {
+        track.removeBeat(forInstrument: note, drumId: beatID)
     }
     
 }

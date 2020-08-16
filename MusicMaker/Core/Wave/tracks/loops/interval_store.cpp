@@ -70,6 +70,14 @@ void CIntervalStore::ResetIntervals() {
             intervals[i].push_back(interval_pair.second);
         }
         std::sort(intervals[i].begin(), intervals[i].end(), sort_comparator<uint8_t>);
+        int k = 0;
+        for (int j = 1; j < intervals[i].size(); ++j) {
+            if (intervals[i][k].end < intervals[i][j].start) {
+                ++k;
+                intervals[i][k] = intervals[i][j];
+            }
+        }
+        intervals[i].resize(k + 1);
         indexes[i] = 0;
     }
 }

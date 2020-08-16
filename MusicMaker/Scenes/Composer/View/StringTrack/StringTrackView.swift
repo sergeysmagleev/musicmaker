@@ -14,9 +14,8 @@ protocol StringTrackViewDelegate: AnyObject {
                          timeStamp: Int,
                          beatID: String)
     func stringTrackView(_ sender: StringTrackView,
-                         didMoveNoteWithID beatID: String,
-                         toNote: Int,
-                         timeStamp: Int)
+                         didRemoveBeatAtNote note: Int,
+                         beatID: String)
 }
 
 class StringTrackView: UIView {
@@ -56,13 +55,13 @@ class StringTrackView: UIView {
     private func setup() {
         addSubview(backgroundView)
         backgroundColor = ColorPalette.mainBackground
-        let longTap = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
-        longTap.delegate = self
-        addGestureRecognizer(longTap)
+//        let longTap = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
+//        longTap.delegate = self
+//        addGestureRecognizer(longTap)
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap(_:))))
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
-        pan.delegate = self
-        addGestureRecognizer(pan)
+//        let pan = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
+//        pan.delegate = self
+//        addGestureRecognizer(pan)
     }
     
     func configure(withNumberOfBeats numberOfBeats: Int, numberOfInstruments: Int) {
@@ -72,7 +71,10 @@ class StringTrackView: UIView {
                                  columnWidth: 44.0,
                                  numberOfBeats: numOfBeats,
                                  numberOfInstruments: numOfInstruments)
-        frame = CGRect(x: 0, y: 0, width: 44.0 * CGFloat(numberOfBeats), height: 32.0 * CGFloat(numberOfInstruments))
+        frame = CGRect(x: 0,
+                       y: 0,
+                       width: 44.0 * CGFloat(numberOfBeats),
+                       height: 32.0 * CGFloat(numberOfInstruments))
     }
     
     @objc private func didLongPress(_ sender: UILongPressGestureRecognizer) {
@@ -96,7 +98,8 @@ class StringTrackView: UIView {
     }
     
     @objc private func didTap(_ sender: UITapGestureRecognizer) {
-//        print("yo dude I was legit tapped right now")
+        let location = sender.location(in: self)
+        addNewNote(at: location)
     }
     
     @objc private func didPan(_ sender: UIPanGestureRecognizer) {
@@ -120,13 +123,28 @@ class StringTrackView: UIView {
         }
     }
     
+    @objc private func didTapNote(_ sender: UITapGestureRecognizer) {
+        guard let view = sender.view, let noteId = beatIDs[view] else {
+            return
+        }
+        let note = Int(view.center.y / 32.0)
+        delegate?.stringTrackView(self, didRemoveBeatAtNote: note, beatID: noteId)
+        view.removeFromSuperview()
+    }
+    
     private func addNewNote(at point: CGPoint) {
+        let note = Int(point.y / 32.0)
+        let beat = Int((point.x - 60) / 44.0)
         let newCoords = CGPoint(x: CGFloat(trunc((point.x - 60) / 44.0) * 44.0 + 60),
                                 y: CGFloat(trunc(point.y / 32.0) * 32.0))
         let newSquareFrame = CGRect(origin: newCoords, size: CGSize(width: 44.0, height: 32.0))
         let newSquare = UIView(frame: newSquareFrame)
         addSubview(newSquare)
         newSquare.backgroundColor = .green
+        newSquare.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapNote(_:))))
+        let uuid = UUID().uuidString
+        delegate?.stringTrackView(self, didAddBeatAtNote: note, timeStamp: beat, beatID: uuid)
+        beatIDs[newSquare] = uuid
     }
     
     private func performAppearAnimation(on view: UIView) {
