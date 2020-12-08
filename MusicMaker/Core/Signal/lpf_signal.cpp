@@ -33,3 +33,8 @@ void CLowPassFilterSignal::start() {
 void CLowPassFilterSignal::stop() {
     main_signal->stop();
 }
+
+void CLowPassFilterSignal::reset() {
+    last_value = 0;
+    main_signal->reset();
+}

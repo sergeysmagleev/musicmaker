@@ -38,10 +38,11 @@ class AudioEngine {
         let sourceNode = AVAudioSourceNode { [unowned self] _, _, frameCount, audioBufferList -> OSStatus in
             let ablPointer = UnsafeMutableAudioBufferListPointer(audioBufferList)
             for frame in 0 ..< Int(frameCount) {
-                let value = self.delegate?.audioEngineValueForNextFrame() ?? 0
+                let value = (self.delegate?.audioEngineValueForNextFrame() ?? 0) / 5.0
+                let capped = min(1.0, max(-1.0, value))
                 for buffer in ablPointer {
                     let buf: UnsafeMutableBufferPointer<Float> = UnsafeMutableBufferPointer(buffer)
-                    buf[frame] = Float(value)
+                    buf[frame] = Float(capped)
                 }
             }
             return noErr

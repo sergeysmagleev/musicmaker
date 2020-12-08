@@ -35,3 +35,8 @@ void CHighPassFilterSignal::start() {
 void CHighPassFilterSignal::stop() {
     main_signal->stop();
 }
+
+void CHighPassFilterSignal::reset() {
+    previous_y = 0;
+    main_signal->reset();
+}

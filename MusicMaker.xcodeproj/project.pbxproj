@@ -57,6 +57,7 @@
 		C582670F247A799900E3C881 /* SoundProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C582670E247A799900E3C881 /* SoundProducer.swift */; };
 		C5826711247A79B300E3C881 /* SinToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5826710247A79B300E3C881 /* SinToneGenerator.swift */; };
 		C5A45A3424CB0EDA004CC62E /* interval_store.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5A45A3224CB0ED9004CC62E /* interval_store.cpp */; };
+		C5A80567256003890079E999 /* DrumTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A80566256003890079E999 /* DrumTrackViewController.swift */; };
 		C5AB192124D45BCA0060A879 /* StringTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB192024D45BCA0060A879 /* StringTrackView.swift */; };
 		C5AB192324E16FC10060A879 /* StringTrackBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB192224E16FC10060A879 /* StringTrackBackgroundView.swift */; };
 		C5AB192524E1CD4A0060A879 /* StringTrackScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB192424E1CD4A0060A879 /* StringTrackScrollView.swift */; };
@@ -82,6 +83,11 @@
 		C5C9E3A224AE33E2004CBC8F /* modulated_lpf_signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5C9E3A024AE33E1004CBC8F /* modulated_lpf_signal.cpp */; };
 		C5C9E3A524AF602F004CBC8F /* linear_continuous_envelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5C9E3A324AF602E004CBC8F /* linear_continuous_envelope.cpp */; };
 		C5C9E3AB24B372F0004CBC8F /* positive_sine_wave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5C9E3A924B372EF004CBC8F /* positive_sine_wave.cpp */; };
+		C5D5FD1D2568025D00326A6C /* filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5D5FD1B2568025D00326A6C /* filter.cpp */; };
+		C5D5FD232568026F00326A6C /* allpass_filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5D5FD212568026F00326A6C /* allpass_filter.cpp */; };
+		C5D5FD292568027D00326A6C /* comb_filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5D5FD272568027D00326A6C /* comb_filter.cpp */; };
+		C5D5FD38256AFAC200326A6C /* delay_filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5D5FD36256AFAC200326A6C /* delay_filter.cpp */; };
+		C5D5FE2D2572BEEC00326A6C /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D5FE2C2572BEEC00326A6C /* Collection+Extensions.swift */; };
 		C5E6CF23248A2E120027A8D5 /* LiveTrack.mm in Sources */ = {isa = PBXBuildFile; fileRef = C5E6CF22248A2E120027A8D5 /* LiveTrack.mm */; };
 		C5E6CF2D248F99EA0027A8D5 /* waveform_signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5E6CF2B248F99EA0027A8D5 /* waveform_signal.cpp */; };
 		C5E6CF30248F99FF0027A8D5 /* combined_signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5E6CF2E248F99FF0027A8D5 /* combined_signal.cpp */; };
@@ -180,6 +186,7 @@
 		C5A45A3224CB0ED9004CC62E /* interval_store.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = interval_store.cpp; sourceTree = "<group>"; };
 		C5A45A3324CB0ED9004CC62E /* interval_store.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = interval_store.hpp; sourceTree = "<group>"; };
 		C5A45A3524CB0EF6004CC62E /* interval.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interval.h; sourceTree = "<group>"; };
+		C5A80566256003890079E999 /* DrumTrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumTrackViewController.swift; sourceTree = "<group>"; };
 		C5AB192024D45BCA0060A879 /* StringTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrackView.swift; sourceTree = "<group>"; };
 		C5AB192224E16FC10060A879 /* StringTrackBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrackBackgroundView.swift; sourceTree = "<group>"; };
 		C5AB192424E1CD4A0060A879 /* StringTrackScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrackScrollView.swift; sourceTree = "<group>"; };
@@ -224,6 +231,15 @@
 		C5C9E3A424AF602E004CBC8F /* linear_continuous_envelope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = linear_continuous_envelope.hpp; sourceTree = "<group>"; };
 		C5C9E3A924B372EF004CBC8F /* positive_sine_wave.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = positive_sine_wave.cpp; sourceTree = "<group>"; };
 		C5C9E3AA24B372EF004CBC8F /* positive_sine_wave.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = positive_sine_wave.hpp; sourceTree = "<group>"; };
+		C5D5FD1B2568025D00326A6C /* filter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = filter.cpp; sourceTree = "<group>"; };
+		C5D5FD1C2568025D00326A6C /* filter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = filter.hpp; sourceTree = "<group>"; };
+		C5D5FD212568026F00326A6C /* allpass_filter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = allpass_filter.cpp; sourceTree = "<group>"; };
+		C5D5FD222568026F00326A6C /* allpass_filter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = allpass_filter.hpp; sourceTree = "<group>"; };
+		C5D5FD272568027D00326A6C /* comb_filter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = comb_filter.cpp; sourceTree = "<group>"; };
+		C5D5FD282568027D00326A6C /* comb_filter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = comb_filter.hpp; sourceTree = "<group>"; };
+		C5D5FD36256AFAC200326A6C /* delay_filter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = delay_filter.cpp; sourceTree = "<group>"; };
+		C5D5FD37256AFAC200326A6C /* delay_filter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = delay_filter.hpp; sourceTree = "<group>"; };
+		C5D5FE2C2572BEEC00326A6C /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		C5E6CF21248A2E120027A8D5 /* LiveTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveTrack.h; sourceTree = "<group>"; };
 		C5E6CF22248A2E120027A8D5 /* LiveTrack.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LiveTrack.mm; sourceTree = "<group>"; };
 		C5E6CF2B248F99EA0027A8D5 /* waveform_signal.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = waveform_signal.cpp; sourceTree = "<group>"; };
@@ -288,6 +304,7 @@
 		C53ED2ED247AD6FA00282B1F /* Composer */ = {
 			isa = PBXGroup;
 			children = (
+				C5D5FE2B2572BE5200326A6C /* Extensions */,
 				C5C8916124A0E82E003BF846 /* FileLoader */,
 				C53ED3232481501000282B1F /* Tools */,
 				C53ED3162480275A00282B1F /* Abstract */,
@@ -324,6 +341,7 @@
 				C53ED303247FD41900282B1F /* NoteSheetViewController.swift */,
 				C53ED317248047A100282B1F /* AudioEngine.swift */,
 				C5C891412493DCFD003BF846 /* ToneVisualizerViewController.swift */,
+				C5A80566256003890079E999 /* DrumTrackViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -590,6 +608,29 @@
 			path = SignalFactory;
 			sourceTree = "<group>";
 		};
+		C5D5FD1A2568024B00326A6C /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				C5D5FD1B2568025D00326A6C /* filter.cpp */,
+				C5D5FD1C2568025D00326A6C /* filter.hpp */,
+				C5D5FD212568026F00326A6C /* allpass_filter.cpp */,
+				C5D5FD222568026F00326A6C /* allpass_filter.hpp */,
+				C5D5FD272568027D00326A6C /* comb_filter.cpp */,
+				C5D5FD282568027D00326A6C /* comb_filter.hpp */,
+				C5D5FD36256AFAC200326A6C /* delay_filter.cpp */,
+				C5D5FD37256AFAC200326A6C /* delay_filter.hpp */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		C5D5FE2B2572BE5200326A6C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C5D5FE2C2572BEEC00326A6C /* Collection+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C5E6CF24248CF58C0027A8D5 /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +648,7 @@
 		C5E6CF2A248F77F70027A8D5 /* Signal */ = {
 			isa = PBXGroup;
 			children = (
+				C5D5FD1A2568024B00326A6C /* Filter */,
 				C5C9E39F24AE129D004CBC8F /* SignalFactory */,
 				C5E6CF34248FE0E50027A8D5 /* Envelope */,
 				C5E6CF2B248F99EA0027A8D5 /* waveform_signal.cpp */,
@@ -818,10 +860,13 @@
 				C5C91F8424B872C9009F2954 /* square_wave.cpp in Sources */,
 				C55D22A3248999610098F4B4 /* sine_wave.cpp in Sources */,
 				C568008524C4915400C80089 /* DrumBeatView.swift in Sources */,
+				C5D5FD1D2568025D00326A6C /* filter.cpp in Sources */,
 				C5C91F7D24B63065009F2954 /* delay_signal.cpp in Sources */,
 				C53ED308247FD4DA00282B1F /* Note.swift in Sources */,
 				C5826711247A79B300E3C881 /* SinToneGenerator.swift in Sources */,
+				C5D5FE2D2572BEEC00326A6C /* Collection+Extensions.swift in Sources */,
 				C53ED30A2480117000282B1F /* Wave.swift in Sources */,
+				C5D5FD38256AFAC200326A6C /* delay_filter.cpp in Sources */,
 				C5E6CF4324916ABA0027A8D5 /* triangle_wave.cpp in Sources */,
 				C5E6CF3D249038F10027A8D5 /* signal_factory.cpp in Sources */,
 				C5C9E39824AD1DFD004CBC8F /* sawtooth_wave.cpp in Sources */,
@@ -830,6 +875,7 @@
 				C53ED304247FD41A00282B1F /* NoteSheetViewController.swift in Sources */,
 				C53ED318248047A100282B1F /* AudioEngine.swift in Sources */,
 				C53ED306247FD4AA00282B1F /* Instrument.swift in Sources */,
+				C5A80567256003890079E999 /* DrumTrackViewController.swift in Sources */,
 				C568008324C397D500C80089 /* DrumTrackView.swift in Sources */,
 				C58266DC247A75AC00E3C881 /* AppDelegate.swift in Sources */,
 				C582670D247A797500E3C881 /* SoundWaveGenerator.swift in Sources */,
@@ -842,7 +888,9 @@
 				C5A45A3424CB0EDA004CC62E /* interval_store.cpp in Sources */,
 				C5E6CF372490045F0027A8D5 /* noise_wave.cpp in Sources */,
 				C53ED3222480609200282B1F /* PlayedTone.swift in Sources */,
+				C5D5FD232568026F00326A6C /* allpass_filter.cpp in Sources */,
 				C5E6CF4024903CC90027A8D5 /* hpf_signal.cpp in Sources */,
+				C5D5FD292568027D00326A6C /* comb_filter.cpp in Sources */,
 				C53ED300247F068800282B1F /* CompositeWave.swift in Sources */,
 				C5AB192324E16FC10060A879 /* StringTrackBackgroundView.swift in Sources */,
 				C5C8916C24A28118003BF846 /* AudioFileLoader.m in Sources */,

@@ -38,3 +38,8 @@ void CModulatedLPFSignal::stop() {
     main_signal->stop();
     modulating_signal->stop();
 }
+
+void CModulatedLPFSignal::reset() {
+    main_signal->reset();
+    modulating_signal->reset();
+}

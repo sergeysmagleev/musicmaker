@@ -37,6 +37,10 @@ void CPCMSignal::stop() {
     
 }
 
+void CPCMSignal::reset() {
+    position = 0;
+}
+
 int32_t CPCMSignal::length() {
     return bytecount;
 }

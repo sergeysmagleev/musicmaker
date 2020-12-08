@@ -87,3 +87,11 @@ void CIntervalStore::ResetIndexes() {
         indexes[i] = 0;
     }
 }
+
+uint8_t * CIntervalStore::SerializeStore(int &length) {
+    return nullptr;
+}
+
+void CIntervalStore::DeserializeStore(uint8_t * bytes, int lenght) {
+    
+}

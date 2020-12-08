@@ -10,8 +10,10 @@
 #import "composed_track.hpp"
 #import "signal_factory.hpp"
 #import "note.h"
+#import "circular_buffer.hpp"
 
 #define BUFFER_SIZE 44100
+#define REPLAY_BUFFER_SIZE 512
 
 @implementation ComposedTrack {
     CComposedTrack *track;
@@ -25,33 +27,42 @@
     bool write_buffer_ready;
     __strong NSData* audioData;
     bool should_keep_playing;
+    CCircularBuffer<float> replay_buffer;
+    
 }
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-//        track = new CComposedTrack(CSignalFactory::kickDrum(130.81),
-//                                   CSignalFactory::snareDrum(),
-//                                   CSignalFactory::hihat_drum(),
-//                                   CSignalFactory::modulated_bass(noteA1, noteB1),
-//                                   CSignalFactory::modulated_bass(noteB0, noteB0),
-//                                   CSignalFactory::separate_reverb_chord(noteC5, noteEb5, noteG5),
-//                                   CSignalFactory::separate_reverb_chord(noteF4, noteA4, noteC5),
-//                                   CSignalFactory::separate_reverb_chord(noteG4, noteBb4, noteD5));
+//        track = new CComposedTrack({CSignalFactory::kickDrum(130.81),
+//            CSignalFactory::snareDrum(),
+//            CSignalFactory::hihat_drum()});
         track = new CComposedTrack({
-            CSignalFactory::bell_thingy(noteC5),
-            CSignalFactory::bell_thingy(noteCd5),
-            CSignalFactory::bell_thingy(noteD5),
-            CSignalFactory::bell_thingy(noteDd5),
-            CSignalFactory::bell_thingy(noteE5),
-            CSignalFactory::bell_thingy(noteF5),
-            CSignalFactory::bell_thingy(noteFd5),
-            CSignalFactory::bell_thingy(noteG5),
-            CSignalFactory::bell_thingy(noteGd5),
-            CSignalFactory::bell_thingy(noteA5),
-            CSignalFactory::bell_thingy(noteAd5),
-            CSignalFactory::bell_thingy(noteB5)
+            CSignalFactory::bell_thingy(noteC2),
+            CSignalFactory::bell_thingy(noteCd2),
+            CSignalFactory::bell_thingy(noteD2),
+            CSignalFactory::bell_thingy(noteDd2),
+            CSignalFactory::bell_thingy(noteE2),
+            CSignalFactory::bell_thingy(noteF2),
+            CSignalFactory::bell_thingy(noteFd2),
+            CSignalFactory::bell_thingy(noteG2),
+            CSignalFactory::bell_thingy(noteGd2),
+            CSignalFactory::bell_thingy(noteA2),
+            CSignalFactory::bell_thingy(noteAd2),
+            CSignalFactory::bell_thingy(noteB2),
+            CSignalFactory::bell_thingy(noteC3),
+            CSignalFactory::bell_thingy(noteCd3),
+            CSignalFactory::bell_thingy(noteD3),
+            CSignalFactory::bell_thingy(noteDd3),
+            CSignalFactory::bell_thingy(noteE3),
+            CSignalFactory::bell_thingy(noteF3),
+            CSignalFactory::bell_thingy(noteFd3),
+            CSignalFactory::bell_thingy(noteG3),
+            CSignalFactory::bell_thingy(noteGd3),
+            CSignalFactory::bell_thingy(noteA3),
+            CSignalFactory::bell_thingy(noteAd3),
+            CSignalFactory::bell_thingy(noteB3)
         });
         
         buffering_queue = dispatch_queue_create("com.file_reader.buffer_queue", DISPATCH_QUEUE_SERIAL);
@@ -61,6 +72,7 @@
         read_buffer_ready = false;
         buffer_position = 0;
         should_keep_playing = false;
+        replay_buffer.alloc_size(REPLAY_BUFFER_SIZE);
     }
     return self;
 }
@@ -83,6 +95,7 @@
     }
     write_buffer_ready = true;
     [lock unlock];
+    [self.delegate composedTrack:self didPrepareBuffer:writeBuffer];
 }
 
 - (void)swapBuffersAsync {
@@ -124,6 +137,7 @@
 
 - (void)stop {
     track->StopPlaying();
+//    [self clearBuffers];
 }
 
 - (float)next_sample {    
@@ -136,11 +150,15 @@
                 [self clearBuffers];
             }
         } else {
+            replay_buffer.write(0);
+            replay_buffer.increase_start_index();
             return 0;
         }
     }
     float ret_val = readBuffer[buffer_position];
     buffer_position += 1;
+    replay_buffer.write(ret_val);
+    replay_buffer.increase_start_index();
     return ret_val;
 }
 
@@ -158,15 +176,15 @@
     
 }
 
-- (void)toggleBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat drumId:(NSString *)drumId {
+- (void)toggleBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat length:(NSInteger)length drumId:(NSString *)drumId {
     [lock lock];
-    track->toggle_signal((int)instrument, (int)beat, [drumId cStringUsingEncoding:NSUTF8StringEncoding]);
+    track->toggle_signal((int)instrument, (int)beat, (int)length, [drumId cStringUsingEncoding:NSUTF8StringEncoding]);
     [lock unlock];
 }
 
-- (void)addBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat drumId:(NSString *)drumId {
+- (void)addBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat length:(NSInteger)length drumId:(NSString *)drumId {
     [lock lock];
-    track->toggle_signal((int)instrument, (int)beat, [drumId cStringUsingEncoding:NSUTF8StringEncoding]);
+    track->toggle_signal((int)instrument, (int)beat, (int)length, [drumId cStringUsingEncoding:NSUTF8StringEncoding]);
     [lock unlock];
 }
 
@@ -176,5 +194,8 @@
     [lock unlock];
 }
 
+- (const float *)replayValues {
+    return replay_buffer.to_linear_buffer();
+}
 
 @end

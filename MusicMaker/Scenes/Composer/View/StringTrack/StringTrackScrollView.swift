@@ -33,7 +33,14 @@ class StringTrackScrollView: UIView {
         scrollView.bounces = false
         addSubview(scrollView)
         scrollView.addSubview(stringTrackView)
-        stringTrackView.configure(withNumberOfBeats: 64, numberOfInstruments: 12)
+    }
+    
+    func configure(withNumberOfBeats numberOfBeats: Int,
+                   numberOfInstruments: Int,
+                   noteNames: [String]) {
+        stringTrackView.configure(withNumberOfBeats: numberOfBeats,
+                                  numberOfInstruments: numberOfInstruments,
+                                  noteNames: noteNames)
     }
     
     func setTrackViewDelegate(_ delegate: StringTrackViewDelegate) {

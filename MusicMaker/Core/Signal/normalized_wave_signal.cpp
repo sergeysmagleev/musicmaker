@@ -20,6 +20,14 @@ float CNormalizedWaveSignal::advanceTimeAndReturnValue(float time_increment) {
     return signal->advanceTimeAndReturnValue(time_increment) * 0.5 + 0.5;
 }
 
-void CNormalizedWaveSignal::start() { }
+void CNormalizedWaveSignal::start() {
+    signal->start();
+}
 
-void CNormalizedWaveSignal::stop() { }
+void CNormalizedWaveSignal::stop() {
+    signal->stop();
+}
+
+void CNormalizedWaveSignal::reset() {
+    signal->reset();
+}

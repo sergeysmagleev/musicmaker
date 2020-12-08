@@ -27,3 +27,7 @@ float CWave::play(float time_increment) {
     }
     return shape(phaseShift + phase) * amplitude;
 }
+
+void CWave::reset() {
+    phase = 0;
+}

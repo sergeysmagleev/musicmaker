@@ -8,6 +8,7 @@
 
 #include "composed_track.hpp"
 #include <limits.h>
+#include <assert.h>
 #include "math.h"
 
 static const float time_increment = 1.0 / 44100;
@@ -40,12 +41,14 @@ float CComposedTrack::play_next_frame() {
     return drum_loop->PlayNextFrame();
 }
 
-void CComposedTrack::toggle_signal(int signal_index, int beat, std::string _uuid) {
-    drum_loop->ToggleInterval(signal_index, beat, beat + 1, _uuid);
+void CComposedTrack::toggle_signal(int signal_index, int beat, int length, std::string _uuid) {
+    assert(length >= 1);
+    drum_loop->ToggleInterval(signal_index, beat, beat + length, _uuid);
 }
 
-void CComposedTrack::add_signal(int signal_index, int beat, std::string _uuid) {
-    drum_loop->AddInterval(signal_index, beat, beat + 1, _uuid);
+void CComposedTrack::add_signal(int signal_index, int beat, int length, std::string _uuid) {
+    assert(length >= 1);
+    drum_loop->AddInterval(signal_index, beat, beat + length, _uuid);
 }
 
 void CComposedTrack::remove_signal(int signal_index, std::string _uuid) {

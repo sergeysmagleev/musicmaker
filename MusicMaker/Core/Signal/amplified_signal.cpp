@@ -28,3 +28,7 @@ void CAmplifiedSignal::start() {
 void CAmplifiedSignal::stop() {
     signal->stop();
 }
+
+void CAmplifiedSignal::reset() {
+    signal->reset();
+}

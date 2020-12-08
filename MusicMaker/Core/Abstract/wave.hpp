@@ -23,6 +23,7 @@ public:
     CWave(float _frequency, float _amplitude, float _phaseShift);
     virtual ~CWave();
     virtual float play(float time);
+    virtual void reset();
 };
 
 #endif /* wave_hpp */

@@ -15,6 +15,7 @@ class StringTrackBackgroundView: UIView {
     
     private var numberOfInstruments: Int!
     private var numberOfBeats: Int!
+    private var noteNames: [String] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,11 +28,13 @@ class StringTrackBackgroundView: UIView {
     func configure(trackHeight: CGFloat,
                    columnWidth: CGFloat,
                    numberOfBeats: Int,
-                   numberOfInstruments: Int) {
+                   numberOfInstruments: Int,
+                   noteNames: [String]) {
         self.trackHeight = trackHeight
         self.columnWidth = columnWidth
         self.numberOfBeats = numberOfBeats
         self.numberOfInstruments = numberOfInstruments
+        self.noteNames = noteNames
     }
     
     override func layoutSubviews() {
@@ -49,6 +52,12 @@ class StringTrackBackgroundView: UIView {
             context.move(to: CGPoint(x: 0, y: CGFloat(i) * trackHeight))
             context.addLine(to: CGPoint(x: frame.size.width, y: CGFloat(i) * trackHeight))
             context.strokePath()
+        }
+        for i in 0 ..< numberOfInstruments {
+            let attributedNoteString = NSAttributedString(string: noteNames[i],
+                                                          attributes: [.foregroundColor : UIColor.white,
+                                                                       .font: UIFont.systemFont(ofSize: 16)])
+            attributedNoteString.draw(at: CGPoint(x: 10, y: 10 + CGFloat(i) * trackHeight))
         }
         let offset: CGFloat = 60.0
         context.setStrokeColor(UIColor.lightGray.cgColor)

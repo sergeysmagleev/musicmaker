@@ -16,6 +16,7 @@ public:
     virtual float advanceTimeAndReturnValue(float time_increment) = 0;
     virtual void start() = 0;
     virtual void stop() = 0;
+    virtual void reset() = 0;
     CSignal();
     virtual ~CSignal();
 };

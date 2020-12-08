@@ -31,6 +31,7 @@ public:
     float advanceTimeAndReturnValue(float time_increment) override;
     void start() override;
     void stop() override;
+    void reset() override;
 };
 
 #endif /* modulated_signal_hpp */

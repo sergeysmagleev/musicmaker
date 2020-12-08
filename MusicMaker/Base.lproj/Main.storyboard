@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,17 +19,17 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beH-1y-HQA" customClass="KeyboardView" customModule="MusicMaker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="q87-Sv-KIV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="beH-1y-HQA" secondAttribute="trailing" id="BKa-0o-t5f"/>
                             <constraint firstItem="beH-1y-HQA" firstAttribute="leading" secondItem="J2M-su-CfI" secondAttribute="leading" id="BTG-dx-OUf"/>
                             <constraint firstAttribute="bottom" secondItem="beH-1y-HQA" secondAttribute="bottom" id="Og7-uV-pg6"/>
                             <constraint firstItem="beH-1y-HQA" firstAttribute="top" secondItem="q87-Sv-KIV" secondAttribute="top" id="pxv-SN-6dj"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="q87-Sv-KIV"/>
                     </view>
                     <connections>
                         <outlet property="keyboardView" destination="beH-1y-HQA" id="iyX-7I-o9W"/>
@@ -46,43 +48,82 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGE-dc-sWq" customClass="StringTrackScrollView" customModule="MusicMaker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="350"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="233.5"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Bk-sE-G6J">
                                 <rect key="frame" x="0.0" y="350" width="896" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDK-Cn-6Nl">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDK-Cn-6Nl">
                                         <rect key="frame" x="433" y="17" width="30" height="30"/>
                                         <state key="normal" title="Play"/>
                                         <connections>
                                             <action selector="playButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DgS-3a-Jev"/>
                                         </connections>
                                     </button>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="lX4-wT-0wo">
+                                        <rect key="frame" x="52" y="16" width="94" height="32"/>
+                                        <connections>
+                                            <action selector="noteStepperTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="5uT-sM-cPn"/>
+                                        </connections>
+                                    </stepper>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APS-T8-dqx">
+                                        <rect key="frame" x="178" y="21.5" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="MPa-Ai-kdy"/>
                                     <constraint firstItem="tDK-Cn-6Nl" firstAttribute="centerY" secondItem="2Bk-sE-G6J" secondAttribute="centerY" id="Yc3-Sn-Yb3"/>
+                                    <constraint firstItem="APS-T8-dqx" firstAttribute="leading" secondItem="lX4-wT-0wo" secondAttribute="trailing" constant="32" id="bon-2E-BFL"/>
                                     <constraint firstItem="tDK-Cn-6Nl" firstAttribute="centerX" secondItem="2Bk-sE-G6J" secondAttribute="centerX" id="dLL-bF-2He"/>
+                                    <constraint firstItem="lX4-wT-0wo" firstAttribute="centerY" secondItem="2Bk-sE-G6J" secondAttribute="centerY" id="l1Q-wF-0yh"/>
+                                    <constraint firstItem="APS-T8-dqx" firstAttribute="centerY" secondItem="2Bk-sE-G6J" secondAttribute="centerY" id="mz0-br-8eC"/>
+                                    <constraint firstItem="tDK-Cn-6Nl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="APS-T8-dqx" secondAttribute="trailing" constant="8" symbolic="YES" id="plA-fh-qKe"/>
+                                    <constraint firstItem="lX4-wT-0wo" firstAttribute="leading" secondItem="2Bk-sE-G6J" secondAttribute="leadingMargin" id="tdf-FH-rSN"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OHA-22-7WX" customClass="FrequencyVisualizerView" customModule="MusicMaker" customModuleProvider="target">
+                                <rect key="frame" x="448" y="233.5" width="448" height="116.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUx-SM-cze" customClass="ToneVisualizerView" customModule="MusicMaker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="233.5" width="448" height="116.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="2Bk-sE-G6J" secondAttribute="trailing" id="7mN-Zl-ubB"/>
-                            <constraint firstAttribute="bottom" secondItem="2Bk-sE-G6J" secondAttribute="bottom" id="KIp-Oo-ra8"/>
-                            <constraint firstItem="2Bk-sE-G6J" firstAttribute="top" secondItem="hGE-dc-sWq" secondAttribute="bottom" id="KXI-WM-jqO"/>
-                            <constraint firstItem="2Bk-sE-G6J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KnM-Ur-JFv"/>
-                            <constraint firstItem="hGE-dc-sWq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bYq-DY-U3b"/>
-                            <constraint firstItem="hGE-dc-sWq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="iDt-OY-FAW"/>
-                            <constraint firstAttribute="trailing" secondItem="hGE-dc-sWq" secondAttribute="trailing" id="jsS-Zt-xoO"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OHA-22-7WX" secondAttribute="trailing" id="5qI-Iw-Pgf"/>
+                            <constraint firstAttribute="trailing" secondItem="2Bk-sE-G6J" secondAttribute="trailing" id="7mN-Zl-ubB"/>
+                            <constraint firstItem="eUx-SM-cze" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="AKu-iS-d2i"/>
+                            <constraint firstItem="2Bk-sE-G6J" firstAttribute="top" secondItem="eUx-SM-cze" secondAttribute="bottom" id="AaB-vW-fYN"/>
+                            <constraint firstItem="eUx-SM-cze" firstAttribute="height" secondItem="hGE-dc-sWq" secondAttribute="height" multiplier="0.5" id="Bre-0v-pSf"/>
+                            <constraint firstAttribute="bottom" secondItem="2Bk-sE-G6J" secondAttribute="bottom" id="KIp-Oo-ra8"/>
+                            <constraint firstItem="2Bk-sE-G6J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KnM-Ur-JFv"/>
+                            <constraint firstItem="2Bk-sE-G6J" firstAttribute="top" secondItem="OHA-22-7WX" secondAttribute="bottom" id="MWP-Vx-dRx"/>
+                            <constraint firstItem="OHA-22-7WX" firstAttribute="top" secondItem="hGE-dc-sWq" secondAttribute="bottom" id="OXC-M5-8ck"/>
+                            <constraint firstItem="OHA-22-7WX" firstAttribute="leading" secondItem="eUx-SM-cze" secondAttribute="trailing" id="Pdw-U8-dft"/>
+                            <constraint firstItem="eUx-SM-cze" firstAttribute="top" secondItem="hGE-dc-sWq" secondAttribute="bottom" id="T81-iK-GXZ"/>
+                            <constraint firstAttribute="trailing" secondItem="hGE-dc-sWq" secondAttribute="trailing" id="Y7P-64-Kze"/>
+                            <constraint firstItem="hGE-dc-sWq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bYq-DY-U3b"/>
+                            <constraint firstItem="OHA-22-7WX" firstAttribute="width" secondItem="eUx-SM-cze" secondAttribute="width" id="d5T-E8-Mqr"/>
+                            <constraint firstItem="OHA-22-7WX" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="gdx-Ae-Ov1"/>
+                            <constraint firstItem="hGE-dc-sWq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="iDt-OY-FAW"/>
+                            <constraint firstItem="2Bk-sE-G6J" firstAttribute="top" secondItem="OHA-22-7WX" secondAttribute="bottom" id="wnQ-9s-pLz"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="frequencyVisualizerView" destination="OHA-22-7WX" id="CkF-u2-007"/>
+                        <outlet property="noteLengthLabel" destination="APS-T8-dqx" id="Biu-jm-J5G"/>
+                        <outlet property="noteLengthStepper" destination="lX4-wT-0wo" id="mdQ-Ch-Xms"/>
                         <outlet property="playButton" destination="tDK-Cn-6Nl" id="gye-rH-Hsd"/>
                         <outlet property="stringTrackView" destination="hGE-dc-sWq" id="i2n-Hq-E6L"/>
+                        <outlet property="toneVisualizerView" destination="eUx-SM-cze" id="Fht-XC-ebb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -99,9 +140,9 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuv-50-2c4" customClass="ToneVisualizerView" customModule="MusicMaker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="154.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MW6-ek-8xj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MW6-ek-8xj">
                                 <rect key="frame" x="433" y="363" width="30" height="30"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
@@ -110,10 +151,11 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tb-Yt-EIn" customClass="FrequencyVisualizerView" customModule="MusicMaker" customModuleProvider="target">
                                 <rect key="frame" x="44" y="154.5" width="808" height="208.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="p70-Co-q3c"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Fuv-50-2c4" firstAttribute="leading" secondItem="RdM-ad-YMw" secondAttribute="leading" id="0b8-hb-CMQ"/>
                             <constraint firstItem="MW6-ek-8xj" firstAttribute="top" secondItem="9Tb-Yt-EIn" secondAttribute="bottom" id="52a-AK-bcX"/>
@@ -126,7 +168,6 @@
                             <constraint firstItem="9Tb-Yt-EIn" firstAttribute="top" secondItem="Fuv-50-2c4" secondAttribute="bottom" id="oBV-gE-zhL"/>
                             <constraint firstAttribute="trailing" secondItem="Fuv-50-2c4" secondAttribute="trailing" id="rGV-Gg-002"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="p70-Co-q3c"/>
                     </view>
                     <connections>
                         <outlet property="frequencyVisualizerView" destination="9Tb-Yt-EIn" id="YwP-Vc-Kqr"/>
@@ -137,5 +178,53 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="882.58928571428567"/>
         </scene>
+        <!--Drum Track View Controller-->
+        <scene sceneID="sF7-fy-PXZ">
+            <objects>
+                <viewController id="VUu-1E-2Aj" customClass="DrumTrackViewController" customModule="MusicMaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="79b-ka-TfN">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlk-zF-yEU" customClass="DrumTrackView" customModule="MusicMaker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="363"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gu7-8b-vdk">
+                                <rect key="frame" x="433" y="363" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playButtonTapped:" destination="VUu-1E-2Aj" eventType="touchUpInside" id="mFl-A9-vLI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UtR-ES-Nts"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gu7-8b-vdk" firstAttribute="top" secondItem="jlk-zF-yEU" secondAttribute="bottom" id="4S3-4S-68s"/>
+                            <constraint firstItem="gu7-8b-vdk" firstAttribute="bottom" secondItem="UtR-ES-Nts" secondAttribute="bottom" id="A2Z-RB-RNP"/>
+                            <constraint firstItem="jlk-zF-yEU" firstAttribute="leading" secondItem="79b-ka-TfN" secondAttribute="leading" id="Nuq-QY-77O"/>
+                            <constraint firstAttribute="trailing" secondItem="jlk-zF-yEU" secondAttribute="trailing" id="T9L-00-k3W"/>
+                            <constraint firstItem="gu7-8b-vdk" firstAttribute="centerX" secondItem="79b-ka-TfN" secondAttribute="centerX" id="XKl-ZI-dgZ"/>
+                            <constraint firstItem="jlk-zF-yEU" firstAttribute="top" secondItem="UtR-ES-Nts" secondAttribute="top" id="gSd-aM-H9N"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="drumTrackView" destination="jlk-zF-yEU" id="rX0-Bh-dTc"/>
+                        <outlet property="playButton" destination="gu7-8b-vdk" id="rQJ-Rq-Yv2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylg-rS-H4d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.61607142857142" y="1631.8840579710147"/>
+        </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

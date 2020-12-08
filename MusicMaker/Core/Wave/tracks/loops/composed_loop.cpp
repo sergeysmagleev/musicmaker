@@ -67,6 +67,9 @@ void CComposedLoop::PrepareIntervals() {
 void CComposedLoop::stop() {
     reset_loop();
     store.ResetIntervals();
+    for (int i = 0; i < signals.size(); ++i) {
+        signals[i]->reset();
+    }
 }
 
 void CComposedLoop::ToggleInterval(int index, uint8_t begin, uint8_t end, std::string _uuid) {

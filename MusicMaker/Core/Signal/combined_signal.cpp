@@ -49,3 +49,8 @@ void CCombinedSignal::stop() {
     }
 }
 
+void CCombinedSignal::reset() {
+    for (int i = 0; i < signals.size(); ++i) {
+        signals[i]->reset();
+    }
+}

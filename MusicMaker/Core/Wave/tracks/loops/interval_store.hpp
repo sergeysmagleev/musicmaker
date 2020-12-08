@@ -37,6 +37,8 @@ public:
     CInterval<uint8_t> NextInterval(int index);
     void ResetIntervals();
     void ResetIndexes();
+    uint8_t * SerializeStore(int &length);
+    void DeserializeStore(uint8_t * bytes, int lenght);
 };
 
 #endif /* interval_store_hpp */

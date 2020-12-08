@@ -32,8 +32,8 @@ public:
     virtual ~CComposedTrack();
     
     float play_next_frame();
-    void toggle_signal(int signal_index, int beat, std::string _uuid);
-    void add_signal(int signal_index, int beat, std::string _uuid);
+    void toggle_signal(int signal_index, int beat, int length, std::string _uuid);
+    void add_signal(int signal_index, int beat, int length, std::string _uuid);
     void remove_signal(int signal_index, std::string _uuid);
     void StartPlaying();
     void StopPlaying();

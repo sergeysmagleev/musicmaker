@@ -64,13 +64,16 @@ class StringTrackView: UIView {
 //        addGestureRecognizer(pan)
     }
     
-    func configure(withNumberOfBeats numberOfBeats: Int, numberOfInstruments: Int) {
+    func configure(withNumberOfBeats numberOfBeats: Int,
+                   numberOfInstruments: Int,
+                   noteNames: [String]) {
         self.numOfBeats = numberOfBeats
         self.numOfInstruments = numberOfInstruments
         backgroundView.configure(trackHeight: 32.0,
                                  columnWidth: 44.0,
                                  numberOfBeats: numOfBeats,
-                                 numberOfInstruments: numOfInstruments)
+                                 numberOfInstruments: numOfInstruments,
+                                 noteNames: noteNames)
         frame = CGRect(x: 0,
                        y: 0,
                        width: 44.0 * CGFloat(numberOfBeats),

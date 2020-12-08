@@ -25,6 +25,7 @@ public:
     float advanceTimeAndReturnValue(float time_increment) override;
     void start() override;
     void stop() override;
+    void reset() override;
 };
 
 #endif /* modulated_lpf_signal_hpp */

@@ -15,7 +15,7 @@ CWaveformSignal::CWaveformSignal(std::vector<CWave*> _waves, std::vector<float> 
     mltplr = 0.0;
 }
 
-CWaveformSignal::CWaveformSignal(CWave *wave) {
+CWaveformSignal::CWaveformSignal(CWave *wave) : CSignal() {
     waves.push_back(wave);
     amplitudes.push_back(1.0);
     mltplr = 0.0;
@@ -43,4 +43,10 @@ void CWaveformSignal::start() {
 
 void CWaveformSignal::stop() {
 
+}
+
+void CWaveformSignal::reset() {
+    for (int i = 0; i < waves.size(); ++i) {
+        waves[i]->reset();
+    }
 }

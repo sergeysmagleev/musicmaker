@@ -35,7 +35,7 @@ class ToneVisualizerView: UIView {
         }
         context.setFillColor(UIColor.black.cgColor)
         context.fill(bounds)
-//        let gap = frame.size.width / CGFloat(points.count)
+        let gap = frame.size.width / CGFloat(points.count)
         let amp: CGFloat = 200
         context.setLineWidth(0.5)
         context.setStrokeColor(UIColor.white.cgColor)
@@ -46,7 +46,7 @@ class ToneVisualizerView: UIView {
         context.move(to: CGPoint(x: 0, y: frame.height / 2))
         context.setStrokeColor(UIColor.green.cgColor)
         for i in 0 ..< max(0, min(points.count - offset, Int(rect.size.width))) {
-            context.addLine(to: CGPoint(x: CGFloat(i), y: frame.height / 2 - points[i + offset] * amp))
+            context.addLine(to: CGPoint(x: CGFloat(i) * gap, y: frame.height / 2 - points[i + offset] * amp))
         }
         context.strokePath()
     }

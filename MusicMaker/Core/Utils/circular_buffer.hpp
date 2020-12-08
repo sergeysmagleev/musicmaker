@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <mutex>
+#include <cstring>
 
 /// Warning: not thread safe!
 
@@ -34,7 +35,7 @@ public:
     
     void alloc_size(int size) {
         if (buffer != nullptr) {
-            delete buffer;
+            delete[] buffer;
         }
         buffer = new T[size] { 0 };
         buffer_size = size;
@@ -62,6 +63,19 @@ public:
             start_index = 0;
         }
     }
+    
+    void clear_and_reset(T null_value) {
+        assert(buffer != nullptr);
+        for (int i = 0; i < buffer_size; ++i) {
+            buffer[i] = 0;
+        }
+//        start_index = 0;
+    }
+    
+    const T * to_linear_buffer() {
+        return buffer;
+    }
+    
 };
 
 #endif /* circular_buffer_hpp */

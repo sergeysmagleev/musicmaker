@@ -171,11 +171,11 @@ CSignal *CSignalFactory::hi_noise() {
 }
 
 CSignal *CSignalFactory::synth_string(float frequency) {
-    CWave * wave = new CSawtoothWave(frequency, 0.5, 0.0);
+    CWave * wave = new CSawtoothWave(frequency, 0.3, 0.0);
     int detune = (int)(frequency / 100);
     CWave * another_wave = new CSawtoothWave(frequency - detune, 0.2, 0.0);
-    CLinearContinuousEnvelope * noise_amp_envelope = new CLinearContinuousEnvelope(2.0, 1.0, 0.4, 0.7);
-    CSignal *noise_signal = new CWaveformSignal({wave, another_wave}, { 0.7, 0.7 });
+    CLinearContinuousEnvelope * noise_amp_envelope = new CLinearContinuousEnvelope(0.5, 1.0, 0.7, 0.7);
+    CSignal *noise_signal = new CWaveformSignal({wave, another_wave}, { 0.5, 0.5 });
     CWave *sine = new CPositiveSineWave(0.25, 0.8, 0.0);
     CSignal *modulating_signal = new CWaveformSignal({sine}, {0.8});
     CSignal *low_pass = new CModulatedLPFSignal(noise_signal, modulating_signal, true);
@@ -185,7 +185,7 @@ CSignal *CSignalFactory::synth_string(float frequency) {
 
 CSignal *CSignalFactory::reverb_string(float frequency) {
     CSignal *synth = CSignalFactory::synth_string(frequency);
-    CSignal *delayed = new CDelaySignal(synth, 2077, 20, 0.0);
+    CSignal *delayed = new CDelaySignal(synth, 0.75);
     return delayed;
 }
 
@@ -215,8 +215,8 @@ CSignal *CSignalFactory::single_reverb_chord(float frequency1, float frequency2,
     CSignal *signal2 = synth_string(frequency2);
     CSignal *signal3 = synth_string(frequency3);
     CSignal *combined = new CCombinedSignal({signal1, signal2, signal3}, {0.3, 0.3, 0.3});
-    CSignal *delayed = new CDelaySignal(combined, 1283, 17, 0.6);
-    CSignal *amplified = new CAmplifiedSignal(delayed, 0.05);
+    CSignal *delayed = new CDelaySignal(combined, 0.6);
+    CSignal *amplified = new CAmplifiedSignal(delayed, 1.0);
     return amplified;
 }
 
@@ -232,8 +232,8 @@ CSignal *CSignalFactory::bell_thingy(float frequency) {
     
     CLowPassFilterSignal *wave_lowpass = new CLowPassFilterSignal(modulated, 0.5);
     CHighPassFilterSignal *wave_highpass = new CHighPassFilterSignal(wave_lowpass, 0.8);
-//    CSignal *delayed = new CDelaySignal(wave_highpass, 1007, 9, 0.85);
-    return wave_highpass;
+    CSignal *delayed = new CDelaySignal(wave_highpass, 0.75);
+    return delayed;
 }
 
 CSignal *CSignalFactory::quick_noise() {
@@ -241,6 +241,6 @@ CSignal *CSignalFactory::quick_noise() {
     CLinearEnvelope * noise_amp_envelope = new CLinearEnvelope(0.01, 0.02, 0.1, 0.3, 0.031);
     CSignal *noise_signal = new CWaveformSignal({noise_wave}, { 1.0 });
     CSignal *noise_modulated_signal = new CModulatedSignal(noise_signal, noise_amp_envelope, nullptr);
-    CSignal *delayed = new CDelaySignal(noise_modulated_signal, 1007, 9, 0.5);
+    CSignal *delayed = new CDelaySignal(noise_modulated_signal, 0.5);
     return delayed;
 }

@@ -10,16 +10,27 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class ComposedTrack;
+
+@protocol ComposedTrackDelegate <NSObject>
+
+- (void)composedTrack:(ComposedTrack *)track didPrepareBuffer:(const float *)buffer;
+
+@end
+
 @interface ComposedTrack : NSObject
+
+@property (nonatomic, weak) id<ComposedTrackDelegate> delegate;
 
 - (void)start;
 - (void)stop;
 - (float)next_sample;
 - (void)clearBuffers;
 - (void)reset;
-- (void)toggleBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat drumId:(NSString *)drumId;
-- (void)addBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat drumId:(NSString *)drumId;
+- (void)toggleBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat length:(NSInteger)length drumId:(NSString *)drumId;
+- (void)addBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat length:(NSInteger)length drumId:(NSString *)drumId;
 - (void)removeBeatForInstrument:(NSInteger)instrument drumId:(NSString *)drumId;
+- (const float *)replayValues;
 
 @end
 

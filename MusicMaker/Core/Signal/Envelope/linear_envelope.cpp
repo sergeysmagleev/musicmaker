@@ -67,5 +67,14 @@ void CLinearEnvelope::start() {
 }
 
 void CLinearEnvelope::stop() {
-    
+    //left blank;
+}
+
+void CLinearEnvelope::reset() {
+    played = false;
+    value = 0;
+    time = 0;
+    keyFrameIndex = 0;
+    startingTime = 0;
+    latestPlayTime = 0;
 }

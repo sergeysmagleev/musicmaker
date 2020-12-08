@@ -65,3 +65,9 @@ void CModulatedSignal::stop() {
     if (amp_modulator != nullptr) { amp_modulator->stop(); }
     if (freq_modulator != nullptr) { freq_modulator->stop(); }
 }
+
+void CModulatedSignal::reset() {
+    if (main_signal != nullptr) { main_signal->reset(); }
+    if (amp_modulator != nullptr) { amp_modulator->reset(); }
+    if (freq_modulator != nullptr) { freq_modulator->reset(); }
+}

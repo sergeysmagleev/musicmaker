@@ -17,12 +17,13 @@ class CCombinedSignal: public CSignal {
     std::vector<CSignal*> signals;
     std::vector<float> amplitudes;
 public:
-    float advanceTimeAndReturnValue(float time_increment) override;
-    void start() override;
-    void stop() override;
     CCombinedSignal(std::vector<CSignal*> _signals);
     CCombinedSignal(std::vector<CSignal*> _signals, std::vector<float> _amplitudes);
     virtual ~CCombinedSignal();
+    float advanceTimeAndReturnValue(float time_increment) override;
+    void start() override;
+    void stop() override;
+    void reset() override;
 };
 
 #endif /* combined_signal_hpp */

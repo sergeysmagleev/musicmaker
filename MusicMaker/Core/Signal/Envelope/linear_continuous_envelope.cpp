@@ -94,3 +94,13 @@ void CLinearContinuousEnvelope::stop() {
     released_phase = true;
     mutex.unlock();
 }
+
+void CLinearContinuousEnvelope::reset() {
+    mutex.lock();
+    played = false;
+    sustain_keyframes[0].value = 0;
+    value = 0;
+    keyFrameIndex = 0;
+    released_phase = false;
+    mutex.unlock();
+}
