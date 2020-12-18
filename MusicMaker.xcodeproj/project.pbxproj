@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C501C62C25877DCB0094B595 /* AudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C501C62B25877DCB0094B595 /* AudioEngine.m */; };
 		C503D8E4248708E20027A4A3 /* TriangleWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503D8E3248708E20027A4A3 /* TriangleWave.swift */; };
-		C53ED2EB247ACAAB00282B1F /* MusicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED2EA247ACAAB00282B1F /* MusicEngine.swift */; };
 		C53ED2F0247AD71E00282B1F /* NoteSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED2EF247AD71E00282B1F /* NoteSheetView.swift */; };
 		C53ED2F2247AD85D00282B1F /* NoteSheetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED2F1247AD85D00282B1F /* NoteSheetScene.swift */; };
-		C53ED2F4247BC8B900282B1F /* NoteBlockNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED2F3247BC8B900282B1F /* NoteBlockNode.swift */; };
 		C53ED2F6247BC94C00282B1F /* NoteBlockTextureShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED2F5247BC94C00282B1F /* NoteBlockTextureShader.swift */; };
 		C53ED2F8247D802D00282B1F /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED2F7247D802C00282B1F /* KeyboardView.swift */; };
 		C53ED2FB247D85BD00282B1F /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED2FA247D85BD00282B1F /* KeyboardViewController.swift */; };
@@ -53,9 +52,6 @@
 		C58266E8247A75B000E3C881 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58266E6247A75B000E3C881 /* LaunchScreen.storyboard */; };
 		C58266F3247A75B000E3C881 /* MusicMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58266F2247A75B000E3C881 /* MusicMakerTests.swift */; };
 		C58266FE247A75B000E3C881 /* MusicMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58266FD247A75B000E3C881 /* MusicMakerUITests.swift */; };
-		C582670D247A797500E3C881 /* SoundWaveGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C582670C247A797500E3C881 /* SoundWaveGenerator.swift */; };
-		C582670F247A799900E3C881 /* SoundProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C582670E247A799900E3C881 /* SoundProducer.swift */; };
-		C5826711247A79B300E3C881 /* SinToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5826710247A79B300E3C881 /* SinToneGenerator.swift */; };
 		C5A45A3424CB0EDA004CC62E /* interval_store.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5A45A3224CB0ED9004CC62E /* interval_store.cpp */; };
 		C5A80567256003890079E999 /* DrumTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A80566256003890079E999 /* DrumTrackViewController.swift */; };
 		C5AB192124D45BCA0060A879 /* StringTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB192024D45BCA0060A879 /* StringTrackView.swift */; };
@@ -117,11 +113,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C501C62A25877DCB0094B595 /* AudioEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
+		C501C62B25877DCB0094B595 /* AudioEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioEngine.m; sourceTree = "<group>"; };
 		C503D8E3248708E20027A4A3 /* TriangleWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleWave.swift; sourceTree = "<group>"; };
-		C53ED2EA247ACAAB00282B1F /* MusicEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEngine.swift; sourceTree = "<group>"; };
 		C53ED2EF247AD71E00282B1F /* NoteSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSheetView.swift; sourceTree = "<group>"; };
 		C53ED2F1247AD85D00282B1F /* NoteSheetScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSheetScene.swift; sourceTree = "<group>"; };
-		C53ED2F3247BC8B900282B1F /* NoteBlockNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBlockNode.swift; sourceTree = "<group>"; };
 		C53ED2F5247BC94C00282B1F /* NoteBlockTextureShader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBlockTextureShader.swift; sourceTree = "<group>"; };
 		C53ED2F7247D802C00282B1F /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		C53ED2FA247D85BD00282B1F /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -180,9 +176,6 @@
 		C58266F9247A75B000E3C881 /* MusicMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58266FD247A75B000E3C881 /* MusicMakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMakerUITests.swift; sourceTree = "<group>"; };
 		C58266FF247A75B000E3C881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C582670C247A797500E3C881 /* SoundWaveGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundWaveGenerator.swift; sourceTree = "<group>"; };
-		C582670E247A799900E3C881 /* SoundProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProducer.swift; sourceTree = "<group>"; };
-		C5826710247A79B300E3C881 /* SinToneGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinToneGenerator.swift; sourceTree = "<group>"; };
 		C5A45A3224CB0ED9004CC62E /* interval_store.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = interval_store.cpp; sourceTree = "<group>"; };
 		C5A45A3324CB0ED9004CC62E /* interval_store.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = interval_store.hpp; sourceTree = "<group>"; };
 		C5A45A3524CB0EF6004CC62E /* interval.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interval.h; sourceTree = "<group>"; };
@@ -288,7 +281,14 @@
 		C53ED2E9247ACA9B00282B1F /* MusicEngine */ = {
 			isa = PBXGroup;
 			children = (
-				C53ED2EA247ACAAB00282B1F /* MusicEngine.swift */,
+				C59477BD25804B8E0021EEC2 /* AudioEngine */,
+				C53ED317248047A100282B1F /* AudioEngine.swift */,
+				C5C8916124A0E82E003BF846 /* FileLoader */,
+				C53ED3232481501000282B1F /* Tools */,
+				C53ED3162480275A00282B1F /* Abstract */,
+				C53ED312248026EF00282B1F /* Domain */,
+				C53ED311248026E500282B1F /* DataModel */,
+				C53ED2FC247F064700282B1F /* SoundSynthesizer */,
 			);
 			path = MusicEngine;
 			sourceTree = "<group>";
@@ -296,6 +296,8 @@
 		C53ED2EC247AD6F400282B1F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C59477AB257FE0550021EEC2 /* DrumTrackScene */,
+				C59477AA257FE0470021EEC2 /* KeyboardScene */,
 				C53ED2ED247AD6FA00282B1F /* Composer */,
 			);
 			path = Scenes;
@@ -304,13 +306,6 @@
 		C53ED2ED247AD6FA00282B1F /* Composer */ = {
 			isa = PBXGroup;
 			children = (
-				C5D5FE2B2572BE5200326A6C /* Extensions */,
-				C5C8916124A0E82E003BF846 /* FileLoader */,
-				C53ED3232481501000282B1F /* Tools */,
-				C53ED3162480275A00282B1F /* Abstract */,
-				C53ED312248026EF00282B1F /* Domain */,
-				C53ED311248026E500282B1F /* DataModel */,
-				C53ED2FC247F064700282B1F /* SoundSynthesizer */,
 				C53ED2F9247D85AC00282B1F /* ViewController */,
 				C53ED2EE247AD70E00282B1F /* View */,
 			);
@@ -321,12 +316,9 @@
 			isa = PBXGroup;
 			children = (
 				C568008124C397BE00C80089 /* StringTrack */,
-				C568008024C397B300C80089 /* DrumTrack */,
 				C53ED2EF247AD71E00282B1F /* NoteSheetView.swift */,
 				C53ED2F1247AD85D00282B1F /* NoteSheetScene.swift */,
-				C53ED2F3247BC8B900282B1F /* NoteBlockNode.swift */,
 				C53ED2F5247BC94C00282B1F /* NoteBlockTextureShader.swift */,
-				C53ED2F7247D802C00282B1F /* KeyboardView.swift */,
 				C5C891432493DD0B003BF846 /* ToneVisualizerView.swift */,
 				C5C9E39124AB4DAA004CBC8F /* FrequencyVisualizerView.swift */,
 				C5556FED24C6142A00442CA7 /* ColorPalette.swift */,
@@ -337,9 +329,7 @@
 		C53ED2F9247D85AC00282B1F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C53ED2FA247D85BD00282B1F /* KeyboardViewController.swift */,
 				C53ED303247FD41900282B1F /* NoteSheetViewController.swift */,
-				C53ED317248047A100282B1F /* AudioEngine.swift */,
 				C5C891412493DCFD003BF846 /* ToneVisualizerViewController.swift */,
 				C5A80566256003890079E999 /* DrumTrackViewController.swift */,
 			);
@@ -503,18 +493,11 @@
 		C58266DA247A75AC00E3C881 /* MusicMaker */ = {
 			isa = PBXGroup;
 			children = (
+				C55D228C248974C50098F4B4 /* Core */,
+				C53ED2E9247ACA9B00282B1F /* MusicEngine */,
+				C59477AC257FE18E0021EEC2 /* App */,
 				C5C8916724A27FE6003BF846 /* Resources */,
 				C55D228E248975170098F4B4 /* MusicMaker-Bridging-Header.h */,
-				C55D228C248974C50098F4B4 /* Core */,
-				C53ED2EC247AD6F400282B1F /* Scenes */,
-				C53ED2E9247ACA9B00282B1F /* MusicEngine */,
-				C582670B247A795900E3C881 /* SoundWaveGenereator */,
-				C58266DB247A75AC00E3C881 /* AppDelegate.swift */,
-				C58266DD247A75AC00E3C881 /* SceneDelegate.swift */,
-				C58266DF247A75AC00E3C881 /* ViewController.swift */,
-				C58266E1247A75AC00E3C881 /* Main.storyboard */,
-				C58266E4247A75B000E3C881 /* Assets.xcassets */,
-				C58266E6247A75B000E3C881 /* LaunchScreen.storyboard */,
 				C58266E9247A75B000E3C881 /* Info.plist */,
 			);
 			path = MusicMaker;
@@ -538,14 +521,77 @@
 			path = MusicMakerUITests;
 			sourceTree = "<group>";
 		};
-		C582670B247A795900E3C881 /* SoundWaveGenereator */ = {
+		C59477AA257FE0470021EEC2 /* KeyboardScene */ = {
 			isa = PBXGroup;
 			children = (
-				C582670C247A797500E3C881 /* SoundWaveGenerator.swift */,
-				C582670E247A799900E3C881 /* SoundProducer.swift */,
-				C5826710247A79B300E3C881 /* SinToneGenerator.swift */,
+				C59477B9258044180021EEC2 /* ViewController */,
+				C59477B1257FE1CE0021EEC2 /* View */,
 			);
-			path = SoundWaveGenereator;
+			path = KeyboardScene;
+			sourceTree = "<group>";
+		};
+		C59477AB257FE0550021EEC2 /* DrumTrackScene */ = {
+			isa = PBXGroup;
+			children = (
+				C59477B82580440F0021EEC2 /* ViewController */,
+				C59477AD257FE1C00021EEC2 /* View */,
+			);
+			path = DrumTrackScene;
+			sourceTree = "<group>";
+		};
+		C59477AC257FE18E0021EEC2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C5D5FE2B2572BE5200326A6C /* Extensions */,
+				C53ED2EC247AD6F400282B1F /* Scenes */,
+				C58266DB247A75AC00E3C881 /* AppDelegate.swift */,
+				C58266DD247A75AC00E3C881 /* SceneDelegate.swift */,
+				C58266DF247A75AC00E3C881 /* ViewController.swift */,
+				C58266E1247A75AC00E3C881 /* Main.storyboard */,
+				C58266E4247A75B000E3C881 /* Assets.xcassets */,
+				C58266E6247A75B000E3C881 /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C59477AD257FE1C00021EEC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C568008024C397B300C80089 /* DrumTrack */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C59477B1257FE1CE0021EEC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C53ED2F7247D802C00282B1F /* KeyboardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C59477B82580440F0021EEC2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C59477B9258044180021EEC2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C53ED2FA247D85BD00282B1F /* KeyboardViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C59477BD25804B8E0021EEC2 /* AudioEngine */ = {
+			isa = PBXGroup;
+			children = (
+				C501C62A25877DCB0094B595 /* AudioEngine.h */,
+				C501C62B25877DCB0094B595 /* AudioEngine.m */,
+			);
+			path = AudioEngine;
 			sourceTree = "<group>";
 		};
 		C5C891482496175F003BF846 /* tracks */ = {
@@ -844,7 +890,6 @@
 				C55D229A24897C500098F4B4 /* signal.cpp in Sources */,
 				C5E6CF3A24900D780027A8D5 /* lpf_signal.cpp in Sources */,
 				C58266E0247A75AC00E3C881 /* ViewController.swift in Sources */,
-				C582670F247A799900E3C881 /* SoundProducer.swift in Sources */,
 				C5C8917224A3B202003BF846 /* pcm_signal.cpp in Sources */,
 				C55D2291248975180098F4B4 /* wave.c in Sources */,
 				C55D229724897B540098F4B4 /* lfo_tone.cpp in Sources */,
@@ -863,13 +908,13 @@
 				C5D5FD1D2568025D00326A6C /* filter.cpp in Sources */,
 				C5C91F7D24B63065009F2954 /* delay_signal.cpp in Sources */,
 				C53ED308247FD4DA00282B1F /* Note.swift in Sources */,
-				C5826711247A79B300E3C881 /* SinToneGenerator.swift in Sources */,
 				C5D5FE2D2572BEEC00326A6C /* Collection+Extensions.swift in Sources */,
 				C53ED30A2480117000282B1F /* Wave.swift in Sources */,
 				C5D5FD38256AFAC200326A6C /* delay_filter.cpp in Sources */,
 				C5E6CF4324916ABA0027A8D5 /* triangle_wave.cpp in Sources */,
 				C5E6CF3D249038F10027A8D5 /* signal_factory.cpp in Sources */,
 				C5C9E39824AD1DFD004CBC8F /* sawtooth_wave.cpp in Sources */,
+				C501C62C25877DCB0094B595 /* AudioEngine.m in Sources */,
 				C53ED3102480185A00282B1F /* SquareWave.swift in Sources */,
 				C53ED3252481502000282B1F /* AudioBuffer.swift in Sources */,
 				C53ED304247FD41A00282B1F /* NoteSheetViewController.swift in Sources */,
@@ -878,7 +923,6 @@
 				C5A80567256003890079E999 /* DrumTrackViewController.swift in Sources */,
 				C568008324C397D500C80089 /* DrumTrackView.swift in Sources */,
 				C58266DC247A75AC00E3C881 /* AppDelegate.swift in Sources */,
-				C582670D247A797500E3C881 /* SoundWaveGenerator.swift in Sources */,
 				C53ED3202480566700282B1F /* RecordedTone.swift in Sources */,
 				C5C8915A249F8098003BF846 /* fft.cpp in Sources */,
 				C53ED30E2480154600282B1F /* Envelope.swift in Sources */,
@@ -896,14 +940,12 @@
 				C5C8916C24A28118003BF846 /* AudioFileLoader.m in Sources */,
 				C55D22A0248997180098F4B4 /* wave.cpp in Sources */,
 				C5C9E3A224AE33E2004CBC8F /* modulated_lpf_signal.cpp in Sources */,
-				C53ED2F4247BC8B900282B1F /* NoteBlockNode.swift in Sources */,
 				C5C0B6FE24883DDC00CA2029 /* LFOTone.swift in Sources */,
 				C503D8E4248708E20027A4A3 /* TriangleWave.swift in Sources */,
 				C5556FEE24C6142A00442CA7 /* ColorPalette.swift in Sources */,
 				C53ED2F8247D802D00282B1F /* KeyboardView.swift in Sources */,
 				C5AB192124D45BCA0060A879 /* StringTrackView.swift in Sources */,
 				C53ED2F2247AD85D00282B1F /* NoteSheetScene.swift in Sources */,
-				C53ED2EB247ACAAB00282B1F /* MusicEngine.swift in Sources */,
 				C5E6CF30248F99FF0027A8D5 /* combined_signal.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
