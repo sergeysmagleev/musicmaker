@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AudioEngine : NSObject
 
 @property (nonatomic, weak) id<AudioEngineDelegate> delegate;
+@property (nonatomic, readonly) double sampleRate;
 
 - (void)play;
 - (void)stop;

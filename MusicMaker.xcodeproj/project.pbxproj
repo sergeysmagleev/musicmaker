@@ -24,7 +24,6 @@
 		C53ED30E2480154600282B1F /* Envelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED30D2480154600282B1F /* Envelope.swift */; };
 		C53ED3102480185A00282B1F /* SquareWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED30F2480185A00282B1F /* SquareWave.swift */; };
 		C53ED3152480274400282B1F /* LinearEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED3142480274400282B1F /* LinearEnvelope.swift */; };
-		C53ED318248047A100282B1F /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED317248047A100282B1F /* AudioEngine.swift */; };
 		C53ED31A24804DEA00282B1F /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED31924804DEA00282B1F /* Track.swift */; };
 		C53ED31C24804E8C00282B1F /* LiveTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED31B24804E8C00282B1F /* LiveTrack.swift */; };
 		C53ED31E24804E9800282B1F /* ToneTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ED31D24804E9800282B1F /* ToneTrack.swift */; };
@@ -131,7 +130,6 @@
 		C53ED30D2480154600282B1F /* Envelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Envelope.swift; sourceTree = "<group>"; };
 		C53ED30F2480185A00282B1F /* SquareWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareWave.swift; sourceTree = "<group>"; };
 		C53ED3142480274400282B1F /* LinearEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearEnvelope.swift; sourceTree = "<group>"; };
-		C53ED317248047A100282B1F /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
 		C53ED31924804DEA00282B1F /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		C53ED31B24804E8C00282B1F /* LiveTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTrack.swift; sourceTree = "<group>"; };
 		C53ED31D24804E9800282B1F /* ToneTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneTrack.swift; sourceTree = "<group>"; };
@@ -282,7 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				C59477BD25804B8E0021EEC2 /* AudioEngine */,
-				C53ED317248047A100282B1F /* AudioEngine.swift */,
 				C5C8916124A0E82E003BF846 /* FileLoader */,
 				C53ED3232481501000282B1F /* Tools */,
 				C53ED3162480275A00282B1F /* Abstract */,
@@ -918,7 +915,6 @@
 				C53ED3102480185A00282B1F /* SquareWave.swift in Sources */,
 				C53ED3252481502000282B1F /* AudioBuffer.swift in Sources */,
 				C53ED304247FD41A00282B1F /* NoteSheetViewController.swift in Sources */,
-				C53ED318248047A100282B1F /* AudioEngine.swift in Sources */,
 				C53ED306247FD4AA00282B1F /* Instrument.swift in Sources */,
 				C5A80567256003890079E999 /* DrumTrackViewController.swift in Sources */,
 				C568008324C397D500C80089 /* DrumTrackView.swift in Sources */,

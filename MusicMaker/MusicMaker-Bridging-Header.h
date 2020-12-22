@@ -6,3 +6,4 @@
 #include "LiveTrack.h"
 #include "RecordedTrack.h"
 #include "ComposedTrack.h"
+#include "AudioEngine.h"

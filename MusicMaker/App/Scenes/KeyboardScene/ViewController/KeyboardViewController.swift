@@ -31,7 +31,7 @@ class KeyboardViewController: UIViewController {
     private var playTimeStamp: Float = 0
     
     private let audioEngine = AudioEngine()
-    private lazy var track = LiveTrack(sampleRate: audioEngine.sampleRate)
+    private lazy var track = LiveTrack(sampleRate: Float(audioEngine.sampleRate))
 //    private lazy let track = CLiveTrack(audioEngine.sampleRate)
 
     override func viewDidLoad() {
