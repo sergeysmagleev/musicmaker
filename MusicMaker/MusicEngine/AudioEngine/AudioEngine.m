@@ -20,6 +20,10 @@
     float timeStamp;
 }
 
+- (double) sampleRate {
+    return [[self.audioEngine.outputNode inputFormatForBus:0] sampleRate];
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -52,15 +56,19 @@
     [self.audioEngine attachNode:sourceNode];
     [self.audioEngine connect:sourceNode to:mainMixer format: inputFormat];
     [self.audioEngine connect:mainMixer to: output format: outputFormat];
-    mainMixer.outputVolume = 1.0;
+    mainMixer.outputVolume = 0.5;
 }
 
 - (void)play {
-    
+    NSError *error = nil;
+    [self.audioEngine startAndReturnError:&error];
+    if (error != nil) {
+        NSLog(@"%@", error.localizedDescription);
+    }
 }
 
 - (void)stop {
-    
+    [self.audioEngine stop];
 }
 
 @end
