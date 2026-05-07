@@ -16,20 +16,26 @@ protocol DrumTrackViewDelegate: AnyObject {
 }
 
 class DrumTrackView: UIView {
-    
-    private let drumBeatCellWidth: CGFloat = 24.0
-    private let drumBeatCellHeight: CGFloat = 36.0
-    private let drumBeatCellVerticalGap: CGFloat = 10.0
-    private let drumBeatCellHorizontalGap: CGFloat = 10.0
+    private enum Layout {
+        static let labelColumnWidth: CGFloat = 92.0
+        static let cellWidth: CGFloat = 34.0
+        static let cellHeight: CGFloat = 52.0
+        static let rowGap: CGFloat = 16.0
+        static let viewportSideInset: CGFloat = 24.0
+        static let verticalPadding: CGFloat = 20.0
+    }
     
     private var numOfBeats: Int!
     private var numOfInstruments: Int!
-//    private
+    private let instrumentNames = ["Kick", "Snare", "HiHat"]
     
+    private let contentView = UIView()
+    private let labelsContainerView = UIView()
     private let scrollView = UIScrollView()
     private let drumTrackBackgroundView = DrumTrackBackgroundView()
     private var drumBeatViews: [[DrumBeatView]] = []
     private var drumIDs: [[String]] = []
+    private var instrumentLabels: [UILabel] = []
     
     weak var delegate: DrumTrackViewDelegate?
     
@@ -47,20 +53,53 @@ class DrumTrackView: UIView {
         backgroundColor = ColorPalette.mainBackground
         drumTrackBackgroundView.configure(mainColor: ColorPalette.mainBackground,
                                           offColor: ColorPalette.shadeBackground,
-                                          columnWidth: drumBeatCellWidth * 4.0)
-        addSubview(scrollView)
+                                          columnWidth: Layout.cellWidth * 4.0)
+        addSubview(contentView)
+        contentView.addSubview(labelsContainerView)
+        contentView.addSubview(scrollView)
         scrollView.addSubview(drumTrackBackgroundView)
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.alwaysBounceVertical = false
+        scrollView.delaysContentTouches = false
+        labelsContainerView.isUserInteractionEnabled = false
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        scrollView.frame = bounds
+        guard let numOfBeats, let numOfInstruments else {
+            return
+        }
+        let rowHeight = Layout.cellHeight + Layout.rowGap
+        let gridHeight = CGFloat(numOfInstruments) * rowHeight - Layout.rowGap
+        let availableWidth = max(bounds.width - Layout.viewportSideInset * 2.0, Layout.labelColumnWidth + Layout.cellWidth * 4.0)
+        let availableHeight = max(bounds.height - Layout.verticalPadding * 2.0, gridHeight)
+        contentView.frame = CGRect(x: (bounds.width - availableWidth) * 0.5,
+                                   y: (bounds.height - availableHeight) * 0.5,
+                                   width: availableWidth,
+                                   height: availableHeight)
+        labelsContainerView.frame = CGRect(x: 0,
+                                           y: max(0, (contentView.bounds.height - gridHeight) * 0.5),
+                                           width: Layout.labelColumnWidth,
+                                           height: gridHeight)
+        scrollView.frame = CGRect(x: Layout.labelColumnWidth,
+                                  y: 0,
+                                  width: contentView.bounds.width - Layout.labelColumnWidth,
+                                  height: contentView.bounds.height)
+        let contentWidth = Layout.cellWidth * CGFloat(numOfBeats)
+        scrollView.contentSize = CGSize(width: contentWidth, height: gridHeight)
+        let gridOriginY = max(0, (scrollView.bounds.height - gridHeight) * 0.5)
+        drumTrackBackgroundView.frame = CGRect(x: 0, y: gridOriginY, width: contentWidth, height: gridHeight)
         for i in 0 ..< numOfInstruments {
+            instrumentLabels[i].frame = CGRect(x: 0,
+                                               y: CGFloat(i) * rowHeight,
+                                               width: labelsContainerView.bounds.width - 12.0,
+                                               height: Layout.cellHeight)
             for j in 0 ..< numOfBeats {
-                drumBeatViews[i][j].frame = CGRect(x: CGFloat(j) * drumBeatCellWidth,
-                                                   y: CGFloat(i) * drumBeatCellHeight,
-                                                   width: drumBeatCellWidth,
-                                                   height: drumBeatCellHeight)
+                drumBeatViews[i][j].frame = CGRect(x: CGFloat(j) * Layout.cellWidth,
+                                                   y: gridOriginY + CGFloat(i) * rowHeight,
+                                                   width: Layout.cellWidth,
+                                                   height: Layout.cellHeight)
             }
         }
     }
@@ -68,25 +107,30 @@ class DrumTrackView: UIView {
     func configure(numOfBeats: Int, numOfInstruments: Int) {
         self.numOfBeats = numOfBeats
         self.numOfInstruments = numOfInstruments
-        scrollView.contentSize = CGSize(width: drumBeatCellWidth * CGFloat(numOfBeats),
-                                        height: drumBeatCellHeight * CGFloat(numOfInstruments))
-        drumTrackBackgroundView.frame = CGRect(origin: .zero, size: scrollView.contentSize)
         for row in drumBeatViews {
             for view in row {
                 view.removeFromSuperview()
             }
         }
+        for label in instrumentLabels {
+            label.removeFromSuperview()
+        }
         drumBeatViews = []
         drumIDs = []
+        instrumentLabels = []
         for i in 0 ..< numOfInstruments {
+            let label = UILabel()
+            label.font = UIFont.systemFont(ofSize: 20.0, weight: .semibold)
+            label.textColor = ColorPalette.secondary
+            label.textAlignment = .right
+            label.text = instrumentNames[i]
+            labelsContainerView.addSubview(label)
+            instrumentLabels.append(label)
             drumBeatViews.append([])
             drumIDs.append([])
             for j in 0 ..< numOfBeats {
-                let view = DrumBeatView(frame: CGRect(x: CGFloat(j) * drumBeatCellWidth,
-                                                      y: CGFloat(i) * drumBeatCellHeight,
-                                                      width: drumBeatCellWidth,
-                                                      height: drumBeatCellHeight))
-                view.configure(edgeInset: 2.0,
+                let view = DrumBeatView(frame: .zero)
+                view.configure(edgeInset: 3.0,
                                inactiveColor: ColorPalette.mainBackground,
                                selectedColor: ColorPalette.selected,
                                playedColor: ColorPalette.played)
@@ -96,6 +140,7 @@ class DrumTrackView: UIView {
                 scrollView.addSubview(view)
             }
         }
+        setNeedsLayout()
     }
     
     @objc private func didTapDrumBeat(_ sender: UITapGestureRecognizer) {

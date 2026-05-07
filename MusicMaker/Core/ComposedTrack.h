@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)toggleBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat length:(NSInteger)length drumId:(NSString *)drumId;
 - (void)addBeatForInstrument:(NSInteger)instrument beat:(NSInteger)beat length:(NSInteger)length drumId:(NSString *)drumId;
 - (void)removeBeatForInstrument:(NSInteger)instrument drumId:(NSString *)drumId;
+- (void)setBPM:(NSInteger)bpm;
 - (const float *)replayValues;
 
 @end

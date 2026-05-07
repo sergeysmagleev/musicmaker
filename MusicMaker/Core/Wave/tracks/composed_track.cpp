@@ -63,6 +63,10 @@ void CComposedTrack::StopPlaying() {
     drum_loop->stop();
 }
 
+void CComposedTrack::ChangeBPM(int bpm) {
+    drum_loop->change_bpm(bpm);
+}
+
 //float CComposedTrack::play_next_frame() {
 //    if (timer % (whole * 4) == 0) {
 //        synth->start();

@@ -194,6 +194,12 @@
     [lock unlock];
 }
 
+- (void)setBPM:(NSInteger)bpm {
+    [lock lock];
+    track->ChangeBPM((int)bpm);
+    [lock unlock];
+}
+
 - (const float *)replayValues {
     return replay_buffer.to_linear_buffer();
 }
