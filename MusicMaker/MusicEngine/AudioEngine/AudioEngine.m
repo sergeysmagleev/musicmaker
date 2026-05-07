@@ -8,6 +8,7 @@
 
 #import "AudioEngine.h"
 #import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface AudioEngine()
 
@@ -37,25 +38,28 @@
 - (void)prepareEngine {
     AVAudioMixerNode *mainMixer = self.audioEngine.mainMixerNode;
     AVAudioOutputNode *output = self.audioEngine.outputNode;
-    AVAudioFormat *outputFormat = [output inputFormatForBus: 0];
-    AVAudioFormat *inputFormat = [[AVAudioFormat alloc] initWithCommonFormat:outputFormat.commonFormat
-                                                                  sampleRate:outputFormat.sampleRate
-                                                                    channels:1
-                                                                 interleaved:outputFormat.isInterleaved];
-    AVAudioSourceNode *sourceNode = [[AVAudioSourceNode alloc] initWithRenderBlock:^OSStatus(BOOL * _Nonnull isSilence, const AudioTimeStamp * _Nonnull timestamp, AVAudioFrameCount frameCount, AudioBufferList * _Nonnull outputData) {
+    AVAudioFormat *hardwareFormat = [output inputFormatForBus: 0];
+    AVAudioChannelCount channelCount = MAX((AVAudioChannelCount)1, hardwareFormat.channelCount);
+    AVAudioFormat *inputFormat = [[AVAudioFormat alloc] initWithCommonFormat:AVAudioPCMFormatFloat32
+                                                                  sampleRate:hardwareFormat.sampleRate
+                                                                    channels:channelCount
+                                                                 interleaved:NO];
+    AVAudioSourceNode *sourceNode = [[AVAudioSourceNode alloc] initWithFormat:inputFormat renderBlock:^OSStatus(BOOL * _Nonnull isSilence, const AudioTimeStamp * _Nonnull timestamp, AVAudioFrameCount frameCount, AudioBufferList * _Nonnull outputData) {
         for (int i = 0; i < frameCount; ++i) {
-            float value = [self.delegate audioEngineValueForNextFrame] / 5.0;
+            float value = [self.delegate audioEngineValueForNextFrame];
             float capped = MIN(1.0, MAX(-1.0, value));
             for (int j = 0; j < outputData->mNumberBuffers; ++j) {
                 float *data = (float *)outputData->mBuffers[j].mData;
-                data[i] = capped;
+                if (data != NULL) {
+                    data[i] = capped;
+                }
             }
         }
         return noErr;
     }];
     [self.audioEngine attachNode:sourceNode];
     [self.audioEngine connect:sourceNode to:mainMixer format: inputFormat];
-    [self.audioEngine connect:mainMixer to: output format: outputFormat];
+    [self.audioEngine connect:mainMixer to: output format:hardwareFormat];
     mainMixer.outputVolume = 0.5;
 }
 
@@ -64,7 +68,10 @@
     [self.audioEngine startAndReturnError:&error];
     if (error != nil) {
         NSLog(@"%@", error.localizedDescription);
+        return;
     }
+    AVAudioSessionRouteDescription *route = [AVAudioSession sharedInstance].currentRoute;
+    NSLog(@"Current audio outputs: %@", route.outputs);
 }
 
 - (void)stop {

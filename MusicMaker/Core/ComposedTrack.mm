@@ -35,35 +35,35 @@
 {
     self = [super init];
     if (self) {
-//        track = new CComposedTrack({CSignalFactory::kickDrum(130.81),
-//            CSignalFactory::snareDrum(),
-//            CSignalFactory::hihat_drum()});
-        track = new CComposedTrack({
-            CSignalFactory::bell_thingy(noteC2),
-            CSignalFactory::bell_thingy(noteCd2),
-            CSignalFactory::bell_thingy(noteD2),
-            CSignalFactory::bell_thingy(noteDd2),
-            CSignalFactory::bell_thingy(noteE2),
-            CSignalFactory::bell_thingy(noteF2),
-            CSignalFactory::bell_thingy(noteFd2),
-            CSignalFactory::bell_thingy(noteG2),
-            CSignalFactory::bell_thingy(noteGd2),
-            CSignalFactory::bell_thingy(noteA2),
-            CSignalFactory::bell_thingy(noteAd2),
-            CSignalFactory::bell_thingy(noteB2),
-            CSignalFactory::bell_thingy(noteC3),
-            CSignalFactory::bell_thingy(noteCd3),
-            CSignalFactory::bell_thingy(noteD3),
-            CSignalFactory::bell_thingy(noteDd3),
-            CSignalFactory::bell_thingy(noteE3),
-            CSignalFactory::bell_thingy(noteF3),
-            CSignalFactory::bell_thingy(noteFd3),
-            CSignalFactory::bell_thingy(noteG3),
-            CSignalFactory::bell_thingy(noteGd3),
-            CSignalFactory::bell_thingy(noteA3),
-            CSignalFactory::bell_thingy(noteAd3),
-            CSignalFactory::bell_thingy(noteB3)
-        });
+        track = new CComposedTrack({CSignalFactory::kickDrum(32.70),
+            CSignalFactory::snareDrum(),
+            CSignalFactory::hihat_drum()});
+//        track = new CComposedTrack({
+//            CSignalFactory::bell_thingy(noteC2),
+//            CSignalFactory::bell_thingy(noteCd2),
+//            CSignalFactory::bell_thingy(noteD2),
+//            CSignalFactory::bell_thingy(noteDd2),
+//            CSignalFactory::bell_thingy(noteE2),
+//            CSignalFactory::bell_thingy(noteF2),
+//            CSignalFactory::bell_thingy(noteFd2),
+//            CSignalFactory::bell_thingy(noteG2),
+//            CSignalFactory::bell_thingy(noteGd2),
+//            CSignalFactory::bell_thingy(noteA2),
+//            CSignalFactory::bell_thingy(noteAd2),
+//            CSignalFactory::bell_thingy(noteB2),
+//            CSignalFactory::bell_thingy(noteC3),
+//            CSignalFactory::bell_thingy(noteCd3),
+//            CSignalFactory::bell_thingy(noteD3),
+//            CSignalFactory::bell_thingy(noteDd3),
+//            CSignalFactory::bell_thingy(noteE3),
+//            CSignalFactory::bell_thingy(noteF3),
+//            CSignalFactory::bell_thingy(noteFd3),
+//            CSignalFactory::bell_thingy(noteG3),
+//            CSignalFactory::bell_thingy(noteGd3),
+//            CSignalFactory::bell_thingy(noteA3),
+//            CSignalFactory::bell_thingy(noteAd3),
+//            CSignalFactory::bell_thingy(noteB3)
+//        });
         
         buffering_queue = dispatch_queue_create("com.file_reader.buffer_queue", DISPATCH_QUEUE_SERIAL);
         lock = [[NSLock alloc] init];
@@ -191,6 +191,12 @@
 - (void)removeBeatForInstrument:(NSInteger)instrument drumId:(NSString *)drumId {
     [lock lock];
     track->remove_signal((int)instrument, [drumId cStringUsingEncoding:NSUTF8StringEncoding]);
+    [lock unlock];
+}
+
+- (void)setBPM:(NSInteger)bpm {
+    [lock lock];
+    track->ChangeBPM((int)bpm);
     [lock unlock];
 }
 

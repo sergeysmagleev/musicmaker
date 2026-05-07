@@ -37,6 +37,7 @@ public:
     void remove_signal(int signal_index, std::string _uuid);
     void StartPlaying();
     void StopPlaying();
+    void ChangeBPM(int bpm);
 };
 
 #endif /* composed_track_hpp */

@@ -78,8 +78,9 @@
             totalFrames = 0;
             break;
         }
+        NSUInteger bytesRead = (NSUInteger)numFrames * clientFormat.mBytesPerFrame;
         NSData *data = [NSData dataWithBytes:fillBufList.mBuffers[0].mData
-                                      length:fillBufList.mBuffers[0].mDataByteSize];
+                                      length:bytesRead];
         [totalData appendData:data];
         if (numFrames == 0) {
             break;

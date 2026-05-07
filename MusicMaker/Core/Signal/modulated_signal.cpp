@@ -8,6 +8,7 @@
 
 #include "modulated_signal.hpp"
 #include "waveform_signal.hpp"
+#include <cmath>
 
 CModulatedSignal::CModulatedSignal(CSignal * _main_signal,
                                    CSignal * _amp_modulator,
@@ -50,7 +51,19 @@ float CModulatedSignal::advanceTimeAndReturnValue(float time_increment) {
     if (amp_multiplier == 0) {
         return 0;
     }
-    float freq_multiplier = (freq_modulator == nullptr) ? 1.0 : freq_modulator->advanceTimeAndReturnValue(time_increment);
+    float freq_multiplier = 1.0f;
+    if (freq_modulator != nullptr) {
+        float modulator_value = freq_modulator->advanceTimeAndReturnValue(time_increment);
+        freq_multiplier = 1.0f + 0.5f * modulator_value;
+        if (!std::isfinite(freq_multiplier)) {
+            freq_multiplier = 1.0f;
+        }
+        if (freq_multiplier < 0.25f) {
+            freq_multiplier = 0.25f;
+        } else if (freq_multiplier > 4.0f) {
+            freq_multiplier = 4.0f;
+        }
+    }
     return main_signal->advanceTimeAndReturnValue(time_increment * freq_multiplier) * amp_multiplier;
 }
 
