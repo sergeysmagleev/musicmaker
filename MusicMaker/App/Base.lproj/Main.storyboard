@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mHa-Td-hSK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VUu-1E-2Aj">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beH-1y-HQA" customClass="KeyboardView" customModule="MusicMaker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                                <rect key="frame" x="0.0" y="48" width="896" height="366"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGE-dc-sWq" customClass="StringTrackScrollView" customModule="MusicMaker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="233.5"/>
+                                <rect key="frame" x="0.0" y="48" width="896" height="201.5"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Bk-sE-G6J">
@@ -62,13 +62,13 @@
                                         </connections>
                                     </button>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="lX4-wT-0wo">
-                                        <rect key="frame" x="52" y="16" width="94" height="32"/>
+                                        <rect key="frame" x="56" y="16" width="94" height="32"/>
                                         <connections>
                                             <action selector="noteStepperTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="5uT-sM-cPn"/>
                                         </connections>
                                     </stepper>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APS-T8-dqx">
-                                        <rect key="frame" x="178" y="21.5" width="42" height="21"/>
+                                        <rect key="frame" x="182" y="21.5" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -87,11 +87,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OHA-22-7WX" customClass="FrequencyVisualizerView" customModule="MusicMaker" customModuleProvider="target">
-                                <rect key="frame" x="448" y="233.5" width="448" height="116.5"/>
+                                <rect key="frame" x="448" y="249.5" width="448" height="100.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUx-SM-cze" customClass="ToneVisualizerView" customModule="MusicMaker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="233.5" width="448" height="116.5"/>
+                                <rect key="frame" x="0.0" y="249.5" width="448" height="100.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -139,18 +139,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuv-50-2c4" customClass="ToneVisualizerView" customModule="MusicMaker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="154.5"/>
+                                <rect key="frame" x="0.0" y="48" width="896" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MW6-ek-8xj">
-                                <rect key="frame" x="433" y="363" width="30" height="30"/>
+                                <rect key="frame" x="433" y="329" width="30" height="30"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="playButtonTapped:" destination="h6Q-K9-xkQ" eventType="touchUpInside" id="GT1-DY-4Um"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tb-Yt-EIn" customClass="FrequencyVisualizerView" customModule="MusicMaker" customModuleProvider="target">
-                                <rect key="frame" x="44" y="154.5" width="808" height="208.5"/>
+                                <rect key="frame" x="48" y="168" width="800" height="161"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -187,11 +187,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlk-zF-yEU" customClass="DrumTrackView" customModule="MusicMaker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="363"/>
+                                <rect key="frame" x="0.0" y="48" width="896" height="281"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gu7-8b-vdk">
-                                <rect key="frame" x="433" y="363" width="30" height="30"/>
+                                <rect key="frame" x="433" y="329" width="30" height="30"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="playButtonTapped:" destination="VUu-1E-2Aj" eventType="touchUpInside" id="mFl-A9-vLI"/>

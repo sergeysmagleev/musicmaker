@@ -16,6 +16,7 @@
 class CCombinedSignal: public CSignal {
     std::vector<CSignal*> signals;
     std::vector<float> amplitudes;
+    float normalization_factor = 1.0f;
 public:
     CCombinedSignal(std::vector<CSignal*> _signals);
     CCombinedSignal(std::vector<CSignal*> _signals, std::vector<float> _amplitudes);

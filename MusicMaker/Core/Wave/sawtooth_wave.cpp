@@ -10,7 +10,8 @@
 #include "math.h"
 
 float CSawtoothWave::shape(float value) {
-    return fmod(value, M_PI * 2) / M_PI * 2;
+    float normalizedPhase = fmod(value, M_PI * 2) / (M_PI * 2);
+    return normalizedPhase * 2 - 1;
 }
 
 CSawtoothWave::CSawtoothWave(float _frequency, float _amplitude, float _phaseShift) : CWave(_frequency, _amplitude, _phaseShift) { }

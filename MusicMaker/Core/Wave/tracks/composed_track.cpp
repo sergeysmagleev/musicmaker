@@ -23,7 +23,7 @@ CComposedTrack::CComposedTrack(std::vector<CSignal *> _signals) {
     sixteenth = whole / 16;
     tt = whole / 32;
     drum_loop = new CComposedLoop(_signals);
-    drum_loop->change_bpm(140);
+    drum_loop->change_bpm(96);
 //    drum_loop->add_interval(0, 0, 1);
 //    drum_loop->add_interval(0, 16, 17);
 //    drum_loop->add_interval(0, 32, 33);
