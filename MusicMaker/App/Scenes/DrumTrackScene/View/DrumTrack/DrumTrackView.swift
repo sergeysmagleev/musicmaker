@@ -167,3 +167,61 @@ class DrumTrackView: UIView {
     }
     
 }
+
+extension DrumTrackView {
+    
+    func loadDefaultPattern() {
+        for i in 0 ..< 4 {
+            let view = drumBeatViews[0][i * 16]
+            delegate?.drumTrackView(self,
+                                    didTapInstrument: 0,
+                                    atIndex: i * 16,
+                                    drumID: drumIDs[0][i * 16])
+            view.setActive(true)
+        }
+        for i in 0 ..< 4 {
+            let view = drumBeatViews[0][i * 16 + 10]
+            delegate?.drumTrackView(self,
+                                    didTapInstrument: 0,
+                                    atIndex: i * 16 + 10,
+                                    drumID: drumIDs[0][i * 16 + 10])
+            view.setActive(true)
+        }
+        for i in 0 ..< 8 {
+            let view = drumBeatViews[1][i * 8 + 4]
+            delegate?.drumTrackView(self,
+                                    didTapInstrument: 1,
+                                    atIndex: i * 8 + 4,
+                                    drumID: drumIDs[1][i * 8 + 4])
+            view.setActive(true)
+        }
+        for i in 0 ..< 32 {
+            let view = drumBeatViews[2][i * 2]
+            delegate?.drumTrackView(self,
+                                    didTapInstrument: 2,
+                                    atIndex: i * 2,
+                                    drumID: drumIDs[2][i * 2])
+            view.setActive(true)
+        }
+        delegate?.drumTrackView(self,
+                                didTapInstrument: 0,
+                                atIndex: 30,
+                                drumID: drumIDs[0][30])
+        drumBeatViews[0][30].setActive(true)
+        delegate?.drumTrackView(self,
+                                didTapInstrument: 1,
+                                atIndex: 31,
+                                drumID: drumIDs[1][31])
+        drumBeatViews[1][31].setActive(true)
+        delegate?.drumTrackView(self,
+                                didTapInstrument: 0,
+                                atIndex: 62,
+                                drumID: drumIDs[0][62])
+        drumBeatViews[0][62].setActive(true)
+        delegate?.drumTrackView(self,
+                                didTapInstrument: 1,
+                                atIndex: 63,
+                                drumID: drumIDs[1][63])
+        drumBeatViews[1][63].setActive(true)
+    }
+}

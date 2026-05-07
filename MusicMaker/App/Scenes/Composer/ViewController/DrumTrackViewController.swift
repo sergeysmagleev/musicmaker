@@ -66,8 +66,12 @@ class DrumTrackViewController: UIViewController {
         track.setBPM(bpm)
         drumTrackView.configure(numOfBeats: 64, numOfInstruments: 3)
         drumTrackView.delegate = self
+        drumTrackView.loadDefaultPattern()
+        drumTrackView.layer.cornerRadius = 16.0
+        drumTrackView.layer.masksToBounds = true
         setupLayout()
         bpmStepper.addTarget(self, action: #selector(bpmChanged(_:)), for: .valueChanged)
+        view.backgroundColor = ColorPalette.secondary
     }
     
     private func setupLayout() {
