@@ -6,4 +6,6 @@
 #include "LiveTrack.h"
 #include "RecordedTrack.h"
 #include "ComposedTrack.h"
+#include "DrumMachineTrack.h"
+#include "AudioMixer.h"
 #include "AudioEngine.h"

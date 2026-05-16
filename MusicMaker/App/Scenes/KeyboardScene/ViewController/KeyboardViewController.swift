@@ -37,7 +37,6 @@ class KeyboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardView.delegate = self
-        audioEngine.delegate = self
         track.addSignals()
 //        for (index, note) in notes.enumerated() {
 //            track.addTone(withFrequency: Note.F3.frequency, lfoFrequency: powf(2.0, Float(index)), isKick: index < 5)
@@ -85,7 +84,7 @@ class KeyboardViewController: UIViewController {
     
 }
 
-extension KeyboardViewController: AudioEngineDelegate {
+extension KeyboardViewController {
     func audioEngineValueForNextFrame() -> Float {
         return track.advanceTimeAndReturnNextValue()
     }
