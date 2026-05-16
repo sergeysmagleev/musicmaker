@@ -92,6 +92,10 @@
 		C5E6CF3D249038F10027A8D5 /* signal_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5E6CF3B249038F10027A8D5 /* signal_factory.cpp */; };
 		C5E6CF4024903CC90027A8D5 /* hpf_signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5E6CF3E24903CC90027A8D5 /* hpf_signal.cpp */; };
 		C5E6CF4324916ABA0027A8D5 /* triangle_wave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5E6CF4124916ABA0027A8D5 /* triangle_wave.cpp */; };
+		E264E3A42FB3D6CD008AD42A /* transport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E264E3A32FB3D6CD008AD42A /* transport.cpp */; };
+		E264E3A72FB3D701008AD42A /* drum_machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E264E3A62FB3D701008AD42A /* drum_machine.cpp */; };
+		E264E3AA2FB3D714008AD42A /* DrumMachineTrack.mm in Sources */ = {isa = PBXBuildFile; fileRef = E264E3A92FB3D714008AD42A /* DrumMachineTrack.mm */; };
+		E27B9EA52FB67EF40019EA1C /* AudioMixer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E27B9EA42FB67EF40019EA1C /* AudioMixer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,6 +253,15 @@
 		C5E6CF3F24903CC90027A8D5 /* hpf_signal.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hpf_signal.hpp; sourceTree = "<group>"; };
 		C5E6CF4124916ABA0027A8D5 /* triangle_wave.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = triangle_wave.cpp; sourceTree = "<group>"; };
 		C5E6CF4224916ABA0027A8D5 /* triangle_wave.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = triangle_wave.hpp; sourceTree = "<group>"; };
+		E264E3A12FB3D6CC008AD42A /* audio_context.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = audio_context.hpp; sourceTree = "<group>"; };
+		E264E3A22FB3D6CC008AD42A /* transport.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = transport.hpp; sourceTree = "<group>"; };
+		E264E3A32FB3D6CD008AD42A /* transport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = transport.cpp; sourceTree = "<group>"; };
+		E264E3A52FB3D701008AD42A /* drum_machine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = drum_machine.hpp; sourceTree = "<group>"; };
+		E264E3A62FB3D701008AD42A /* drum_machine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = drum_machine.cpp; sourceTree = "<group>"; };
+		E264E3A82FB3D714008AD42A /* DrumMachineTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrumMachineTrack.h; sourceTree = "<group>"; };
+		E264E3A92FB3D714008AD42A /* DrumMachineTrack.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DrumMachineTrack.mm; sourceTree = "<group>"; };
+		E27B9EA32FB67EE60019EA1C /* AudioMixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioMixer.h; sourceTree = "<group>"; };
+		E27B9EA42FB67EF40019EA1C /* AudioMixer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioMixer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +422,10 @@
 				C5C8914A24961782003BF846 /* RecordedTrack.mm */,
 				C5C9E39C24AD36D5004CBC8F /* ComposedTrack.h */,
 				C5C9E39D24AD36D5004CBC8F /* ComposedTrack.mm */,
+				E264E39F2FB3D6B8008AD42A /* Audio */,
+				E264E3A02FB3D6BB008AD42A /* DrumMachine */,
+				E264E3A82FB3D714008AD42A /* DrumMachineTrack.h */,
+				E264E3A92FB3D714008AD42A /* DrumMachineTrack.mm */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -731,6 +748,27 @@
 			path = Envelope;
 			sourceTree = "<group>";
 		};
+		E264E39F2FB3D6B8008AD42A /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				E264E3A12FB3D6CC008AD42A /* audio_context.hpp */,
+				E264E3A22FB3D6CC008AD42A /* transport.hpp */,
+				E264E3A32FB3D6CD008AD42A /* transport.cpp */,
+				E27B9EA32FB67EE60019EA1C /* AudioMixer.h */,
+				E27B9EA42FB67EF40019EA1C /* AudioMixer.mm */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		E264E3A02FB3D6BB008AD42A /* DrumMachine */ = {
+			isa = PBXGroup;
+			children = (
+				E264E3A52FB3D701008AD42A /* drum_machine.hpp */,
+				E264E3A62FB3D701008AD42A /* drum_machine.cpp */,
+			);
+			path = DrumMachine;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -868,6 +906,7 @@
 				C5C891422493DCFD003BF846 /* ToneVisualizerViewController.swift in Sources */,
 				C5C9E39524AD1307004CBC8F /* amplified_signal.cpp in Sources */,
 				C5E6CF2D248F99EA0027A8D5 /* waveform_signal.cpp in Sources */,
+				E264E3A72FB3D701008AD42A /* drum_machine.cpp in Sources */,
 				C53ED3152480274400282B1F /* LinearEnvelope.swift in Sources */,
 				C53ED31A24804DEA00282B1F /* Track.swift in Sources */,
 				C5556FF024C6CD8300442CA7 /* DrumTrackBackgroundView.swift in Sources */,
@@ -932,14 +971,17 @@
 				C5E6CF4024903CC90027A8D5 /* hpf_signal.cpp in Sources */,
 				C5D5FD292568027D00326A6C /* comb_filter.cpp in Sources */,
 				C53ED300247F068800282B1F /* CompositeWave.swift in Sources */,
+				E264E3A42FB3D6CD008AD42A /* transport.cpp in Sources */,
 				C5AB192324E16FC10060A879 /* StringTrackBackgroundView.swift in Sources */,
 				C5C8916C24A28118003BF846 /* AudioFileLoader.m in Sources */,
 				C55D22A0248997180098F4B4 /* wave.cpp in Sources */,
 				C5C9E3A224AE33E2004CBC8F /* modulated_lpf_signal.cpp in Sources */,
 				C5C0B6FE24883DDC00CA2029 /* LFOTone.swift in Sources */,
+				E264E3AA2FB3D714008AD42A /* DrumMachineTrack.mm in Sources */,
 				C503D8E4248708E20027A4A3 /* TriangleWave.swift in Sources */,
 				C5556FEE24C6142A00442CA7 /* ColorPalette.swift in Sources */,
 				C53ED2F8247D802D00282B1F /* KeyboardView.swift in Sources */,
+				E27B9EA52FB67EF40019EA1C /* AudioMixer.mm in Sources */,
 				C5AB192124D45BCA0060A879 /* StringTrackView.swift in Sources */,
 				C53ED2F2247AD85D00282B1F /* NoteSheetScene.swift in Sources */,
 				C5E6CF30248F99FF0027A8D5 /* combined_signal.cpp in Sources */,

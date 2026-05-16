@@ -28,7 +28,6 @@ class NoteSheetViewController: UIViewController {
         super.viewDidLoad()
         track = ComposedTrack()
         track.delegate = self
-        audioEngine.delegate = self
         stringTrackView.setTrackViewDelegate(self)
         stringTrackView.configure(withNumberOfBeats: 64,
                                   numberOfInstruments: 24,
@@ -101,7 +100,7 @@ class NoteSheetViewController: UIViewController {
     
 }
 
-extension NoteSheetViewController: AudioEngineDelegate {
+extension NoteSheetViewController {
     
     func audioEngineValueForNextFrame() -> Float {
         if playing {

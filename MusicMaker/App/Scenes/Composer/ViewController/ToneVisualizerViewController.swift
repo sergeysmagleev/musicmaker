@@ -26,7 +26,6 @@ class ToneVisualizerViewController: UIViewController {
 //        let array = Array(UnsafeBufferPointer(start: points, count: Int(points_count)))
 //        let swapped = array.map { $0.bigEndian }
 //        toneVisualizerView.points = array.map { CGFloat($0) }
-        audioEngine.delegate = self
 //        points.deallocate()
     }
     
@@ -61,7 +60,7 @@ class ToneVisualizerViewController: UIViewController {
     }
 }
 
-extension ToneVisualizerViewController: AudioEngineDelegate {
+extension ToneVisualizerViewController {
     func audioEngineValueForNextFrame() -> Float {
 //        updateVisualizer()
         let value = recordedTrack.next_sample()

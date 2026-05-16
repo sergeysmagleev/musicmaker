@@ -7,18 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "../../Core/Audio/AudioRenderable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol AudioEngineDelegate <NSObject>
-
-- (float)audioEngineValueForNextFrame;
-
-@end
-
 @interface AudioEngine : NSObject
 
-@property (nonatomic, weak) id<AudioEngineDelegate> delegate;
+@property (nonatomic, weak, nullable) id<AudioRenderable> renderSource;
 @property (nonatomic, readonly) double sampleRate;
 
 - (void)play;

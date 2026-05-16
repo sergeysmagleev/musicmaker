@@ -17,7 +17,8 @@ class DrumTrackViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     
     private let audioEngine = AudioEngine()
-    private var track: ComposedTrack!
+    private let mixer = AudioMixer()
+    private lazy var track = DrumMachineTrack(sampleRate: audioEngine.sampleRate)
     private var playing = false
     private var bpm = 96 {
         didSet {
@@ -61,8 +62,8 @@ class DrumTrackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        track = ComposedTrack()
-        audioEngine.delegate = self
+        mixer.addRenderSource(track)
+        audioEngine.renderSource = mixer
         track.setBPM(bpm)
         drumTrackView.configure(numOfBeats: 64, numOfInstruments: 3)
         drumTrackView.delegate = self
@@ -122,24 +123,13 @@ class DrumTrackViewController: UIViewController {
     
 }
 
-extension DrumTrackViewController: AudioEngineDelegate {
-    
-    func audioEngineValueForNextFrame() -> Float {
-        if playing {
-            return track.next_sample()
-        }
-        return 0
-    }
-    
-}
-
 extension DrumTrackViewController: DrumTrackViewDelegate {
     
     func drumTrackView(_ sender: DrumTrackView,
                        didTapInstrument instrument: Int,
                        atIndex index: Int,
                        drumID: String) {
-        track.toggleBeat(forInstrument: instrument, beat: index, length: 1, drumId: drumID)
+        track.toggleStep(forInstrument: instrument, beat: index)
     }
     
 }
