@@ -253,6 +253,7 @@
 		C5E6CF3F24903CC90027A8D5 /* hpf_signal.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hpf_signal.hpp; sourceTree = "<group>"; };
 		C5E6CF4124916ABA0027A8D5 /* triangle_wave.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = triangle_wave.cpp; sourceTree = "<group>"; };
 		C5E6CF4224916ABA0027A8D5 /* triangle_wave.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = triangle_wave.hpp; sourceTree = "<group>"; };
+		E20DED052FBA48A80012E580 /* dsp_primitives.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = dsp_primitives.hpp; sourceTree = "<group>"; };
 		E264E3A12FB3D6CC008AD42A /* audio_context.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = audio_context.hpp; sourceTree = "<group>"; };
 		E264E3A22FB3D6CC008AD42A /* transport.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = transport.hpp; sourceTree = "<group>"; };
 		E264E3A32FB3D6CD008AD42A /* transport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = transport.cpp; sourceTree = "<group>"; };
@@ -411,6 +412,7 @@
 		C55D228C248974C50098F4B4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E20DED062FBA48A80012E580 /* DSP */,
 				C5C91F7E24B6374A009F2954 /* Utils */,
 				C5C8914C24963A9A003BF846 /* FourierTransform */,
 				C5E6CF24248CF58C0027A8D5 /* Abstract */,
@@ -746,6 +748,14 @@
 				C5C9E3A424AF602E004CBC8F /* linear_continuous_envelope.hpp */,
 			);
 			path = Envelope;
+			sourceTree = "<group>";
+		};
+		E20DED062FBA48A80012E580 /* DSP */ = {
+			isa = PBXGroup;
+			children = (
+				E20DED052FBA48A80012E580 /* dsp_primitives.hpp */,
+			);
+			path = DSP;
 			sourceTree = "<group>";
 		};
 		E264E39F2FB3D6B8008AD42A /* Audio */ = {
